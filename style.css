@@ -117,12 +117,11 @@ p {
 
 #coming-soon .github:before {
 	content: ' ';
-        padding-top: 2px;
-        padding-left: 24px;
-        background: url(img/github.png) no-repeat 0 0px;
+	padding-top: 2px;
+	padding-left: 24px;
+	background: url(img/github.png) no-repeat 0 0px;
 }
 
 #coming-soon .github {
         padding-top: 5px;
 }
-
