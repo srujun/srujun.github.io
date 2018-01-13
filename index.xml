@@ -17,7 +17,9 @@
       <pubDate>Fri, 12 Jan 2018 09:11:53 -0600</pubDate>
       
       <guid>http://srujun.com/blog/towards-an-optimal-solution-for-open-flood/</guid>
-      <description>To be published&amp;hellip;</description>
+      <description>A couple months ago I came by an interesting problem that my friends were working on for their Algorithms course homework. The problem statement (linked here) was:
+ (This question was inspired by the game Open Flood [available as an app on Android].)
+You are given a directed graph $\text{G}$ with $n$ vertices and $m$ edges (here $m \geq n$). Every edge $e \in \text{E(G)}$ has a color $c(\text{e})$ associated with it.</description>
     </item>
     
     <item>

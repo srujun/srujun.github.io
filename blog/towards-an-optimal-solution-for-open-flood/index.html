@@ -1026,7 +1026,7 @@ margin-left: -4%;
                     
                         
                     
-                    <div class="reading-time middot">1 minute read</div>
+                    <div class="reading-time middot">2 minute read</div>
                     <div class="tags">
                         <ul>
                           
@@ -1042,7 +1042,31 @@ margin-left: -4%;
             </div>
             <div class="markdown">
                 
-    <p><em>To be published&hellip;</em></p>
+    <p>A couple months ago I came by an interesting problem that my friends were working on for their Algorithms course homework. The problem statement (linked <a href="https://courses.engr.illinois.edu/cs374/fa2017/hw/hw_08.pdf">here</a>) was:</p>
+
+<blockquote>
+<p>(This question was inspired by the game <em>Open Flood</em> [available as an app on Android].)</p>
+
+<p>You are given a directed graph $\text{G}$ with $n$ vertices and $m$ edges (here $m \geq n$). Every edge $e \in \text{E(G)}$ has a color $c(\text{e})$ associated with it. The colors are taken from a set $C = {1, \ldots, \xi}$ (assume $\xi \leq n$), and every color $c \in C$, has price $p(c) &gt; 0$.</p>
+
+<p>Given a start vertex $s_0 = s$, and a sequence of $\Pi = \langle c_1, \ldots, c_\ell \rangle$ of colors, a <em><strong>compliant walk</strong></em>, at the $i$th time, either stays where it is (i.e., $s_{i} = s_{i-1}$), or alternatively travels a sequence of edges of color $c_i$ that starts at $s_i$. Formally, if there is a path $$\sigma \equiv (u_1, u_2), (u_2, u_3), \ldots, (u_{\tau-1}, u_\tau) \in \text{E(G)}$$ such that $c((u_j, u_{j+1})) = c_i$, for all $j$, and $u_1= s_i$, then one can set $s_{i+1} = u_\tau$. The <em><strong>price</strong></em> of $\Pi$ is $p(\Pi)= \sum_{i=1}^\ell p(c_i)$.</p>
+
+<p>Describe an algorithm, as fast as possible, that computes the cheapest sequence of colors for which there is a compliant walk in $\text{G}$ from a vertex $s$ to a vertex $t$.</p>
+
+<p>For full credit, your algorithm should run in $O(m \log m)$ time (be suspicious if you get faster running time). Correct solutions providing polynomial running time would get $50\%$ of the points.</p>
+</blockquote>
+
+<p>Some hard to read math in there, but let us break it down by first looking at the game. It is available on the <a href="https://play.google.com/store/apps/details?id=com.gunshippenguin.openflood">Google Play Store</a>, and since it open source, you can browse the source on <a href="https://github.com/GunshipPenguin/open_flood">GunshipPenguin/open_flood</a>.</p>
+
+<p><img src="/img/open-flood/android-screenshot.png" alt="Open Flood on Android" style="width:50%;display:block;margin:0 auto;"></p>
+
+<p>The idea of the game is simple: you start at the top left cell. In each turn, all adjacent cells with the same color are flooded with the selected color.</p>
+
+<iframe width="100%" height="550" src="//jsfiddle.net/ununtrium/cm2vsv5u/embedded/result/" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>Above is a minimal Javascript implementation of the game.</p>
+
+<p><em>Draft in progress&hellip;</em></p>
 
 
                 <br>
@@ -1126,6 +1150,13 @@ margin-left: -4%;
 
 
 
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-37746576-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
 
 <script>
   window.onload = function() {
@@ -1137,6 +1168,11 @@ margin-left: -4%;
   };
 </script>
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+</script>
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
 
 
 
