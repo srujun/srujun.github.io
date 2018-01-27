@@ -1,0 +1,647 @@
+2018-01-27 01:03:40.621 [main] ClusterBasedJobCoordinator [INFO] Parsing coordinator system config {"systems.kafka.consumer.zookeeper.connect":"localhost:2181/","systems.kafka.samza.factory":"org.apache.samza.system.kafka.KafkaSystemFactory","job.coordinator.monitor-partition-change.frequency.ms":"300000","job.coordinator.system":"kafka","job.id":"1","systems.kafka.samza.msg.serde":"json","job.name":"wikipedia-feed","systems.kafka.producer.bootstrap.servers":"localhost:9092"}
+2018-01-27 01:03:41.943 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:41.965 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:41.966 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-47c257f6-74c7-4998-a127-5ca17e2971c5
+2018-01-27 01:03:41.972 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:42.038 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:42.038 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_consumer-wikipedia_feed-1
+2018-01-27 01:03:42.038 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-d937764e-3d02-4fae-9787-9f6eeada62c6
+2018-01-27 01:03:42.039 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:42.144 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:42.148 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:42.149 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-067c255f-c1ae-4959-ab98-91da781b059f
+2018-01-27 01:03:42.149 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:42.201 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:42.202 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:42.202 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-ac685cfd-4072-44b3-8002-cddf5c1d04f3
+2018-01-27 01:03:42.202 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:42.241 [main] JobModelManager$ [INFO] Registering coordinator system stream consumer.
+2018-01-27 01:03:42.290 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:42.291 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:42.291 [main] VerifiableProperties [INFO] Property metadata.broker.list is overridden to localhost:9092
+2018-01-27 01:03:42.291 [main] VerifiableProperties [INFO] Property request.timeout.ms is overridden to 30000
+2018-01-27 01:03:42.448 [main] ClientUtils$ [INFO] Fetching metadata from broker BrokerEndPoint(0,localhost,9092) with correlation id 0 for 1 topic(s) Set(__samza_coordinator_wikipedia-feed_1)
+2018-01-27 01:03:42.519 [main] SyncProducer [INFO] Connected to localhost:9092 for producing
+2018-01-27 01:03:42.596 [main] SyncProducer [INFO] Disconnecting from localhost:9092
+2018-01-27 01:03:42.758 [main] CoordinatorStreamSystemConsumer [INFO] Got metadata {__samza_coordinator_wikipedia-feed_1=SystemStreamMetadata [streamName=__samza_coordinator_wikipedia-feed_1, partitionMetadata={Partition [partition=0]=SystemStreamPartitionMetadata [oldestOffset=0, newestOffset=18, upcomingOffset=19]}]}
+2018-01-27 01:03:42.774 [main] CoordinatorStreamSystemConsumer [INFO] Starting coordinator stream system consumer.
+2018-01-27 01:03:42.778 [main] KafkaSystemConsumer [INFO] Refreshing brokers for: Map([__samza_coordinator_wikipedia-feed_1,0] -> 0)
+2018-01-27 01:03:42.789 [main] BrokerProxy [INFO] Creating new SimpleConsumer for host ubuntu-xenial:9092 for system kafka
+2018-01-27 01:03:42.796 [main] GetOffset [INFO] Validating offset 0 for topic and partition [__samza_coordinator_wikipedia-feed_1,0]
+2018-01-27 01:03:42.870 [main] GetOffset [INFO] Able to successfully read from offset 0 for topic and partition [__samza_coordinator_wikipedia-feed_1,0]. Using it to instantiate consumer.
+2018-01-27 01:03:42.872 [main] BrokerProxy [INFO] Starting BrokerProxy for ubuntu-xenial:9092
+2018-01-27 01:03:42.876 [main] CoordinatorStreamSystemConsumer [INFO] Bootstrapping configuration from coordinator stream.
+2018-01-27 01:03:43.927 [main] JobModelManager$ [INFO] Registering coordinator system stream producer.
+2018-01-27 01:03:43.929 [main] JobModelManager$ [INFO] Got config: {systems.kafka.consumer.zookeeper.connect=localhost:2181/, systems.kafka.samza.factory=org.apache.samza.system.kafka.KafkaSystemFactory, systems.wikipedia.port=6667, job.coordinator.system=kafka, task.inputs=wikipedia.#en.wikipedia,wikipedia.#en.wiktionary,wikipedia.#en.wikinews, systems.wikipedia.host=irc.wikimedia.org, job.factory.class=org.apache.samza.job.yarn.YarnJobFactory, yarn.package.path=file:///vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz, task.class=samza.examples.wikipedia.task.WikipediaFeedStreamTask, metrics.reporter.jmx.class=org.apache.samza.metrics.reporter.JmxReporterFactory, systems.kafka.samza.msg.serde=json, metrics.reporters=snapshot,jmx, job.coordinator.replication.factor=1, job.name=wikipedia-feed, serializers.registry.json.class=org.apache.samza.serializers.JsonSerdeFactory, metrics.reporter.snapshot.stream=kafka.metrics, systems.kafka.producer.bootstrap.servers=localhost:9092, metrics.reporter.snapshot.class=org.apache.samza.metrics.reporter.MetricsSnapshotReporterFactory, systems.wikipedia.samza.factory=samza.examples.wikipedia.system.WikipediaSystemFactory}
+2018-01-27 01:03:43.933 [main] CoordinatorStreamSystemProducer [INFO] Starting coordinator stream producer.
+2018-01-27 01:03:43.977 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:43.995 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:44.055 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 01:03:44.055 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 01:03:44.056 [main] CoordinatorStreamSystemConsumer [INFO] Coordinator stream consumer already started
+2018-01-27 01:03:44.060 [main] CoordinatorStreamSystemProducer [INFO] Coordinator stream producer already started
+2018-01-27 01:03:44.060 [main] CoordinatorStreamSystemConsumer [INFO] Coordinator stream consumer already started
+2018-01-27 01:03:44.066 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:44.066 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:44.067 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-8635c48d-8a2f-447e-b528-9976acd4ec64
+2018-01-27 01:03:44.067 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:44.075 [main] CoordinatorStreamSystemConsumer [INFO] Bootstrapping configuration from coordinator stream.
+2018-01-27 01:03:44.114 [main] JobModelManager$ [INFO] SystemStreamPartitionGrouper org.apache.samza.container.grouper.stream.GroupByPartition@512535ff has grouped the SystemStreamPartitions into 1 tasks with the following taskNames: [Partition 0]
+2018-01-27 01:03:44.124 [main] JobModelManager$ [INFO] New task Partition 0 is being assigned changelog partition 0.
+2018-01-27 01:03:44.126 [main] TaskConfig [INFO] No task.name.grouper.factory configuration, using 'org.apache.samza.container.grouper.task.GroupByContainerCountFactory'
+2018-01-27 01:03:44.176 [main] log [INFO] Logging initialized @4798ms
+2018-01-27 01:03:44.374 [main] JobModelManager$ [INFO] Saving task-to-changelog partition mapping: Map(Partition 0 -> 0)
+2018-01-27 01:03:44.616 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:44.616 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:44.618 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-27195e2a-ab24-4952-bd71-13e0e1849535
+2018-01-27 01:03:44.621 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:44.643 [main] YarnResourceManagerFactory [INFO] Creating an instance of a cluster resource manager for Yarn. 
+2018-01-27 01:03:44.864 [main] MetricsSnapshotReporterFactory [INFO] Creating new metrics snapshot reporter.
+2018-01-27 01:03:44.891 [main] MetricsSnapshotReporterFactory [WARN] Unable to find implementation version in jar's meta info. Defaulting to 0.0.1.
+2018-01-27 01:03:44.896 [main] MetricsSnapshotReporterFactory [INFO] Got system stream SystemStream [system=kafka, stream=metrics].
+2018-01-27 01:03:44.899 [main] MetricsSnapshotReporterFactory [INFO] Got system factory org.apache.samza.system.kafka.KafkaSystemFactory@3a62c01e.
+2018-01-27 01:03:44.901 [main] MetricsSnapshotReporterFactory [INFO] Got producer org.apache.samza.system.kafka.KafkaSystemProducer@78a287ed.
+2018-01-27 01:03:44.925 [main] MetricsSnapshotReporterFactory [INFO] Got serde org.apache.samza.serializers.JsonSerde@553f1d75.
+2018-01-27 01:03:44.929 [main] MetricsSnapshotReporterFactory [INFO] Setting polling interval to 60
+2018-01-27 01:03:44.959 [main] MetricsSnapshotReporter [INFO] got metrics snapshot reporter properties [job name: wikipedia-feed, job id: 1, containerName: ApplicationMaster, version: 0.0.1, samzaVersion: 0.14.0, host: 10.0.2.15, pollingInterval 60]
+2018-01-27 01:03:44.962 [main] MetricsSnapshotReporter [INFO] Registering MetricsSnapshotReporterFactory with producer.
+2018-01-27 01:03:44.966 [main] JmxReporterFactory [INFO] Creating JMX reporter with  name jmx.
+2018-01-27 01:03:44.973 [main] MetricsSnapshotReporter [INFO] Registering ApplicationMaster with producer.
+2018-01-27 01:03:45.140 [main] YarnClusterResourceManager [INFO] Initialized YarnAppState: YarnAppState{, taskId=-1, amContainerId=container_1517014133362_0002_01_000001, nodeHost='ubuntu-xenial', nodePort=38185, nodeHttpPort=8042, appAttemptId=appattempt_1517014133362_0002_000001, coordinatorUrl=null, rpcUrl=null, trackingUrl=null, runningYarnContainers={}, failedContainersStatus={}}
+2018-01-27 01:03:45.142 [main] YarnClusterResourceManager [INFO] ContainerID str container_1517014133362_0002_01_000001, Nodehost  ubuntu-xenial , Nodeport  38185 , NodeHttpport 8042
+2018-01-27 01:03:45.155 [main] ContainerManagementProtocolProxy [INFO] yarn.client.max-cached-nodemanagers-proxies : 0
+2018-01-27 01:03:45.166 [main] MetricsSnapshotReporterFactory [INFO] Creating new metrics snapshot reporter.
+2018-01-27 01:03:45.166 [main] MetricsSnapshotReporterFactory [WARN] Unable to find implementation version in jar's meta info. Defaulting to 0.0.1.
+2018-01-27 01:03:45.166 [main] MetricsSnapshotReporterFactory [INFO] Got system stream SystemStream [system=kafka, stream=metrics].
+2018-01-27 01:03:45.166 [main] MetricsSnapshotReporterFactory [INFO] Got system factory org.apache.samza.system.kafka.KafkaSystemFactory@5bda80bf.
+2018-01-27 01:03:45.167 [main] MetricsSnapshotReporterFactory [INFO] Got producer org.apache.samza.system.kafka.KafkaSystemProducer@71e5f61d.
+2018-01-27 01:03:45.168 [main] MetricsSnapshotReporterFactory [INFO] Got serde org.apache.samza.serializers.JsonSerde@2ce86164.
+2018-01-27 01:03:45.168 [main] MetricsSnapshotReporterFactory [INFO] Setting polling interval to 60
+2018-01-27 01:03:45.193 [main] MetricsSnapshotReporter [INFO] got metrics snapshot reporter properties [job name: wikipedia-feed, job id: 1, containerName: ApplicationMaster, version: 0.0.1, samzaVersion: 0.14.0, host: 10.0.2.15, pollingInterval 60]
+2018-01-27 01:03:45.193 [main] MetricsSnapshotReporter [INFO] Registering MetricsSnapshotReporterFactory with producer.
+2018-01-27 01:03:45.193 [main] JmxReporterFactory [INFO] Creating JMX reporter with  name jmx.
+2018-01-27 01:03:45.195 [main] MetricsSnapshotReporter [INFO] Registering ApplicationMaster with producer.
+2018-01-27 01:03:45.197 [main] ContainerProcessManager [INFO] finished initialization of samza task manager
+2018-01-27 01:03:45.220 [main] JmxServer [INFO] According to Util.getLocalHost.getHostName we are 10.0.2.15
+2018-01-27 01:03:45.300 [main] JmxServer [INFO] Started JmxServer registry port=38987 server port=45846 url=service:jmx:rmi://localhost:45846/jndi/rmi://localhost:38987/jmxrmi
+2018-01-27 01:03:45.302 [main] JmxServer [INFO] If you are tunneling, you might want to try JmxServer registry port=38987 server port=45846 url=service:jmx:rmi://10.0.2.15:45846/jndi/rmi://10.0.2.15:38987/jmxrmi
+2018-01-27 01:03:45.303 [main] ClusterBasedJobCoordinator [INFO] Starting Cluster Based Job Coordinator
+2018-01-27 01:03:45.362 [main] MetricsSnapshotReporter [INFO] Starting producer.
+2018-01-27 01:03:45.362 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:45.366 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:45.375 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 01:03:45.375 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 01:03:45.377 [main] AppInfoParser [WARN] Error registering AppInfo mbean
+javax.management.InstanceAlreadyExistsException: kafka.producer:type=app-info,id=samza_producer-wikipedia_feed-1
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:58)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:331)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:163)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemProducer.start(KafkaSystemProducer.scala:53)
+	at org.apache.samza.metrics.reporter.MetricsSnapshotReporter.start(MetricsSnapshotReporter.scala:79)
+	at org.apache.samza.metrics.ContainerProcessManagerMetrics$$anonfun$start$1.apply(ContainerProcessManagerMetrics.scala:69)
+	at org.apache.samza.metrics.ContainerProcessManagerMetrics$$anonfun$start$1.apply(ContainerProcessManagerMetrics.scala:69)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:893)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1336)
+	at scala.collection.MapLike$DefaultValuesIterable.foreach(MapLike.scala:206)
+	at org.apache.samza.metrics.ContainerProcessManagerMetrics.start(ContainerProcessManagerMetrics.scala:69)
+	at org.apache.samza.clustermanager.ContainerProcessManager.start(ContainerProcessManager.java:171)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.run(ClusterBasedJobCoordinator.java:188)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.main(ClusterBasedJobCoordinator.java:298)
+2018-01-27 01:03:45.386 [main] MetricsSnapshotReporter [INFO] Starting reporter timer.
+2018-01-27 01:03:45.387 [main] ContainerProcessManager [INFO] Starting Container Process Manager
+2018-01-27 01:03:45.403 [main] MetricsSnapshotReporter [INFO] Starting producer.
+2018-01-27 01:03:45.404 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:45.405 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:45.414 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 01:03:45.414 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 01:03:45.415 [main] AppInfoParser [WARN] Error registering AppInfo mbean
+javax.management.InstanceAlreadyExistsException: kafka.producer:type=app-info,id=samza_producer-wikipedia_feed-1
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:58)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:331)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:163)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemProducer.start(KafkaSystemProducer.scala:53)
+	at org.apache.samza.metrics.reporter.MetricsSnapshotReporter.start(MetricsSnapshotReporter.scala:79)
+	at org.apache.samza.job.yarn.SamzaAppMasterMetrics$$anonfun$start$1.apply(SamzaAppMasterMetrics.scala:58)
+	at org.apache.samza.job.yarn.SamzaAppMasterMetrics$$anonfun$start$1.apply(SamzaAppMasterMetrics.scala:58)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:893)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1336)
+	at scala.collection.MapLike$DefaultValuesIterable.foreach(MapLike.scala:206)
+	at org.apache.samza.job.yarn.SamzaAppMasterMetrics.start(SamzaAppMasterMetrics.scala:58)
+	at org.apache.samza.job.yarn.YarnClusterResourceManager.start(YarnClusterResourceManager.java:179)
+	at org.apache.samza.clustermanager.ContainerProcessManager.start(ContainerProcessManager.java:174)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.run(ClusterBasedJobCoordinator.java:188)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.main(ClusterBasedJobCoordinator.java:298)
+2018-01-27 01:03:45.415 [main] MetricsSnapshotReporter [INFO] Starting reporter timer.
+2018-01-27 01:03:45.417 [main] SamzaYarnAppMasterService [INFO] Starting webapp at a random rpc and tracking port
+2018-01-27 01:03:45.675 [main] ClientHelper [INFO] trying to connect to RM 127.0.0.1:8032
+2018-01-27 01:03:45.751 [main] RMProxy [INFO] Connecting to ResourceManager at /127.0.0.1:8032
+2018-01-27 01:03:46.350 [main] Server [INFO] jetty-9.2.7.v20150116
+2018-01-27 01:03:46.771 [main] ServletTemplateEngine [INFO] Scalate template engine using working directory: /tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0002/container_1517014133362_0002_01_000001/__package/tmp/scalate-4080533125607300840-workdir
+2018-01-27 01:03:46.777 [main] ContextHandler [INFO] Started o.e.j.s.ServletContextHandler@52b6319f{/,jar:file:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0002/filecache/10/hello-samza-0.14.0-dist.tar.gz/lib/samza-yarn_2.11-0.14.0.jar!/scalate,AVAILABLE}
+2018-01-27 01:03:46.787 [main] ServerConnector [INFO] Started ServerConnector@45792847{HTTP/1.1}{0.0.0.0:42073}
+2018-01-27 01:03:46.788 [main] Server [INFO] Started @7410ms
+2018-01-27 01:03:46.810 [main] HttpServer [INFO] Started HttpServer on: http://10.0.2.15:42073/
+2018-01-27 01:03:46.818 [main] Server [INFO] jetty-9.2.7.v20150116
+2018-01-27 01:03:46.896 [main] ServletTemplateEngine [INFO] Scalate template engine using working directory: /tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0002/container_1517014133362_0002_01_000001/__package/tmp/scalate-7274736705299654790-workdir
+2018-01-27 01:03:46.898 [main] ContextHandler [INFO] Started o.e.j.s.ServletContextHandler@1e6dad8{/,jar:file:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0002/filecache/10/hello-samza-0.14.0-dist.tar.gz/lib/samza-yarn_2.11-0.14.0.jar!/scalate,AVAILABLE}
+2018-01-27 01:03:46.900 [main] ServerConnector [INFO] Started ServerConnector@7b3315a5{HTTP/1.1}{0.0.0.0:34652}
+2018-01-27 01:03:46.900 [main] Server [INFO] Started @7522ms
+2018-01-27 01:03:46.919 [main] HttpServer [INFO] Started HttpServer on: http://10.0.2.15:34652/
+2018-01-27 01:03:46.927 [main] Server [INFO] jetty-9.2.7.v20150116
+2018-01-27 01:03:46.936 [main] ContextHandler [INFO] Started o.e.j.s.ServletContextHandler@27b000f7{/,null,AVAILABLE}
+2018-01-27 01:03:46.936 [main] ServerConnector [INFO] Started ServerConnector@42f9c19a{HTTP/1.1}{0.0.0.0:44647}
+2018-01-27 01:03:46.937 [main] Server [INFO] Started @7559ms
+2018-01-27 01:03:46.952 [main] HttpServer [INFO] Started HttpServer on: http://10.0.2.15:44647/
+2018-01-27 01:03:46.969 [main] JobModelManager [INFO] Started HTTP server: http://10.0.2.15:44647/
+2018-01-27 01:03:47.020 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 01:03:47.020 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_feed-1
+2018-01-27 01:03:47.020 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-6192de7b-1d56-4fc1-bc58-a5a1d6a61ea9
+2018-01-27 01:03:47.021 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181/
+2018-01-27 01:03:47.022 [main] CoordinatorStreamSystemProducer [INFO] Starting coordinator stream producer.
+2018-01-27 01:03:47.023 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:47.023 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_feed-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 01:03:47.026 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 01:03:47.027 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 01:03:47.027 [main] AppInfoParser [WARN] Error registering AppInfo mbean
+javax.management.InstanceAlreadyExistsException: kafka.producer:type=app-info,id=samza_producer-wikipedia_feed-1
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:58)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:331)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:163)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemProducer.start(KafkaSystemProducer.scala:53)
+	at org.apache.samza.coordinator.stream.CoordinatorStreamSystemProducer.start(CoordinatorStreamSystemProducer.java:84)
+	at org.apache.samza.coordinator.stream.CoordinatorStreamWriter.start(CoordinatorStreamWriter.java:58)
+	at org.apache.samza.job.yarn.SamzaYarnAppMasterService.onInit(SamzaYarnAppMasterService.scala:67)
+	at org.apache.samza.job.yarn.YarnClusterResourceManager.start(YarnClusterResourceManager.java:180)
+	at org.apache.samza.clustermanager.ContainerProcessManager.start(ContainerProcessManager.java:174)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.run(ClusterBasedJobCoordinator.java:188)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.main(ClusterBasedJobCoordinator.java:298)
+2018-01-27 01:03:47.027 [main] CoordinatorStreamWriter [INFO] Started coordinator stream writer.
+2018-01-27 01:03:47.028 [main] CoordinatorStreamWriter [INFO] sent SetConfig message with key = samza.autoscaling.server.url and value = http://10.0.2.15:44647/
+2018-01-27 01:03:47.128 [main] CoordinatorStreamWriter [INFO] Stopping the coordinator stream producer.
+2018-01-27 01:03:47.129 [main] CoordinatorStreamSystemProducer [INFO] Stopping coordinator stream producer.
+2018-01-27 01:03:47.132 [main] KafkaSystemProducer [INFO] Stopping producer for system: kafka
+2018-01-27 01:03:47.132 [main] KafkaProducer [INFO] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+2018-01-27 01:03:47.143 [main] SamzaYarnAppMasterService [INFO] Webapp is started at (rpc http://10.0.2.15:42073/, tracking http://10.0.2.15:34652/, coordinator http://10.0.2.15:44647/)
+2018-01-27 01:03:47.144 [main] YarnClusterResourceManager [INFO] Starting YarnContainerManager.
+2018-01-27 01:03:47.163 [main] RMProxy [INFO] Connecting to ResourceManager at /127.0.0.1:8030
+2018-01-27 01:03:47.427 [main] SamzaYarnAppMasterLifecycle [INFO] Got AM register response. The YARN RM supports container requests with max-mem: 8192, max-cpu: 1
+2018-01-27 01:03:47.427 [main] YarnClusterResourceManager [INFO] Finished starting YarnContainerManager
+2018-01-27 01:03:47.427 [main] ContainerProcessManager [INFO] Starting the Samza task manager
+2018-01-27 01:03:47.430 [main] SamzaResourceRequest [INFO] Resource Request created for 0 on ANY_HOST at 1517015027430
+2018-01-27 01:03:47.430 [main] YarnClusterResourceManager [INFO] Requesting resources on  ANY_HOST for container 0
+2018-01-27 01:03:47.440 [main] YarnClusterResourceManager [INFO] Making a request for ANY_HOST ANY_HOST
+2018-01-27 01:03:47.452 [main] ContainerProcessManager [INFO] Starting the container allocator thread
+2018-01-27 01:03:49.566 [AMRM Heartbeater thread] AMRMClientImpl [INFO] Received new token for : ubuntu-xenial:38185
+2018-01-27 01:03:49.573 [AMRM Callback Handler Thread] YarnClusterResourceManager [INFO] Container allocated from RM on ubuntu-xenial
+2018-01-27 01:03:49.580 [AMRM Callback Handler Thread] ContainerProcessManager [INFO] Container allocated from RM on ubuntu-xenial
+2018-01-27 01:03:49.581 [AMRM Callback Handler Thread] ResourceRequestState [INFO] Host affinity not enabled. Saving the samzaResource container_1517014133362_0002_01_000002 in the buffer for ANY_HOST
+2018-01-27 01:03:51.078 [Container Allocator Thread] YarnClusterResourceManager [INFO] Cancelling request SamzaResourceRequest{numCores=1, memoryMB=1024, preferredHost='ANY_HOST', requestID='7e360166-a980-4c75-864b-816c218a90a7', containerID=0, requestTimestampMs=1517015027430} 
+2018-01-27 01:03:51.080 [Container Allocator Thread] AbstractContainerAllocator [INFO] Found available resources on ANY_HOST. Assigning request for container_id 0 with timestamp 1517015027430 to resource container_1517014133362_0002_01_000002
+2018-01-27 01:03:51.083 [Container Allocator Thread] YarnClusterResourceManager [INFO] Received launch request for 0 on hostname ubuntu-xenial
+2018-01-27 01:03:51.086 [Container Allocator Thread] YarnContainerRunner [INFO] Got available container ID (0) for container: Container: [ContainerId: container_1517014133362_0002_01_000002, NodeId: ubuntu-xenial:38185, NodeHttpAddress: ubuntu-xenial:8042, Resource: <memory:1024, vCores:1>, Priority: 0, Token: Token { kind: ContainerToken, service: 127.0.1.1:38185 }, ]
+2018-01-27 01:03:51.086 [Container Allocator Thread] YarnContainerRunner [INFO] In runContainer in util: fwkPath= ;cmdPath=./__package/;jobLib=
+2018-01-27 01:03:51.088 [Container Allocator Thread] YarnContainerRunner [INFO] Container ID 0 using command ./__package//bin/run-container.sh
+2018-01-27 01:03:51.088 [Container Allocator Thread] YarnContainerRunner [INFO] Container ID 0 using environment variables: 
+SAMZA_CONTAINER_ID=0
+EXECUTION_ENV_CONTAINER_ID=container_1517014133362_0002_01_000002
+SAMZA_COORDINATOR_URL=http://10.0.2.15:44647/
+JAVA_OPTS=
+2018-01-27 01:03:51.089 [Container Allocator Thread] YarnContainerRunner [INFO] Samza FWK path: ./__package//bin/run-container.sh; env={SAMZA_CONTAINER_ID=0, EXECUTION_ENV_CONTAINER_ID=container_1517014133362_0002_01_000002, SAMZA_COORDINATOR_URL=http://10.0.2.15:44647/, JAVA_OPTS=}
+2018-01-27 01:03:51.093 [Container Allocator Thread] YarnContainerRunner [INFO] Starting container ID 0 using package path file:/vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz
+2018-01-27 01:03:51.093 [Container Allocator Thread] YarnContainerRunner [INFO] starting container file:/vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz Container: [ContainerId: container_1517014133362_0002_01_000002, NodeId: ubuntu-xenial:38185, NodeHttpAddress: ubuntu-xenial:8042, Resource: <memory:1024, vCores:1>, Priority: 0, Token: Token { kind: ContainerToken, service: 127.0.1.1:38185 }, ] {SAMZA_CONTAINER_ID=0, EXECUTION_ENV_CONTAINER_ID=container_1517014133362_0002_01_000002, SAMZA_COORDINATOR_URL=http://10.0.2.15:44647/, JAVA_OPTS=} export SAMZA_LOG_DIR=<LOG_DIR>  && ln -sfn <LOG_DIR> logs && exec ./__package//bin/run-container.sh 1>logs/stdout 2>logs/stderr
+2018-01-27 01:03:51.500 [Container Allocator Thread] YarnContainerRunner [INFO] set package Resource in YarnContainerRunner for scheme: "file" port: -1 file: "/vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz"
+2018-01-27 01:03:51.568 [Container Allocator Thread] ContainerManagementProtocolProxy [INFO] Opening proxy : ubuntu-xenial:38185
+2018-01-27 01:03:51.769 [Container Allocator Thread] YarnContainerRunner [INFO] Claimed container ID 0 for container container_1517014133362_0002_01_000002 on node ubuntu-xenial (http://ubuntu-xenial:8042/node/containerlogs/container_1517014133362_0002_01_000002).
+2018-01-27 01:03:51.769 [Container Allocator Thread] YarnContainerRunner [INFO] Started container ID 0

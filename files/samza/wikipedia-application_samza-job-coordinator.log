@@ -1,0 +1,745 @@
+2018-01-27 00:52:17.187 [main] ClusterBasedJobCoordinator [INFO] Parsing coordinator system config {"systems.kafka.consumer.zookeeper.connect":"localhost:2181","systems.kafka.samza.factory":"org.apache.samza.system.kafka.KafkaSystemFactory","job.coordinator.monitor-partition-change.frequency.ms":"300000","job.coordinator.system":"kafka","job.id":"1","job.name":"wikipedia-application","systems.kafka.default.stream.replication.factor":"1","systems.kafka.producer.bootstrap.servers":"localhost:9092"}
+2018-01-27 00:52:18.061 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:18.076 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:18.076 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-d28a7f86-3f62-4913-8f03-0a5b6a210d3e
+2018-01-27 00:52:18.077 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:18.108 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:18.109 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_consumer-wikipedia_application-1
+2018-01-27 00:52:18.109 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-b43533b0-ac67-44eb-9069-d6f2194fa3f2
+2018-01-27 00:52:18.109 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:18.153 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:18.153 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:18.154 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-ea682ace-6f12-49a1-bab1-0d3b202600ca
+2018-01-27 00:52:18.154 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:18.192 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:18.193 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:18.193 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-3745df69-a71e-4f7f-9f40-fef18bd6ac8d
+2018-01-27 00:52:18.194 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:18.220 [main] JobModelManager$ [INFO] Registering coordinator system stream consumer.
+2018-01-27 00:52:18.271 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:18.271 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:18.272 [main] VerifiableProperties [INFO] Property metadata.broker.list is overridden to localhost:9092
+2018-01-27 00:52:18.272 [main] VerifiableProperties [INFO] Property request.timeout.ms is overridden to 30000
+2018-01-27 00:52:18.358 [main] ClientUtils$ [INFO] Fetching metadata from broker BrokerEndPoint(0,localhost,9092) with correlation id 0 for 1 topic(s) Set(__samza_coordinator_wikipedia-application_1)
+2018-01-27 00:52:18.413 [main] SyncProducer [INFO] Connected to localhost:9092 for producing
+2018-01-27 00:52:18.470 [main] SyncProducer [INFO] Disconnecting from localhost:9092
+2018-01-27 00:52:18.579 [main] CoordinatorStreamSystemConsumer [INFO] Got metadata {__samza_coordinator_wikipedia-application_1=SystemStreamMetadata [streamName=__samza_coordinator_wikipedia-application_1, partitionMetadata={Partition [partition=0]=SystemStreamPartitionMetadata [oldestOffset=0, newestOffset=53, upcomingOffset=54]}]}
+2018-01-27 00:52:18.598 [main] CoordinatorStreamSystemConsumer [INFO] Starting coordinator stream system consumer.
+2018-01-27 00:52:18.601 [main] KafkaSystemConsumer [INFO] Refreshing brokers for: Map([__samza_coordinator_wikipedia-application_1,0] -> 0)
+2018-01-27 00:52:18.613 [main] BrokerProxy [INFO] Creating new SimpleConsumer for host ubuntu-xenial:9092 for system kafka
+2018-01-27 00:52:18.624 [main] GetOffset [INFO] Validating offset 0 for topic and partition [__samza_coordinator_wikipedia-application_1,0]
+2018-01-27 00:52:18.700 [main] GetOffset [INFO] Able to successfully read from offset 0 for topic and partition [__samza_coordinator_wikipedia-application_1,0]. Using it to instantiate consumer.
+2018-01-27 00:52:18.701 [main] BrokerProxy [INFO] Starting BrokerProxy for ubuntu-xenial:9092
+2018-01-27 00:52:18.713 [main] CoordinatorStreamSystemConsumer [INFO] Bootstrapping configuration from coordinator stream.
+2018-01-27 00:52:19.772 [main] JobModelManager$ [INFO] Registering coordinator system stream producer.
+2018-01-27 00:52:19.774 [main] JobModelManager$ [INFO] Got config: {systems.kafka.samza.factory=org.apache.samza.system.kafka.KafkaSystemFactory, serializers.registry.TimeSeriesKeySerde-4aa75d71-7ef1-4eae-b92d-4b64a0e80339.samza.serialized.instance=rO0ABXNyADhvcmcuYXBhY2hlLnNhbXphLm9wZXJhdG9ycy5pbXBsLnN0b3JlLlRpbWVTZXJpZXNLZXlTZXJkZeZFAbSeMCYVAgABTAAIa2V5U2VyZGV0ACRMb3JnL2FwYWNoZS9zYW16YS9zZXJpYWxpemVycy9TZXJkZTt4cHA=, serializers.registry.string.class=org.apache.samza.serializers.StringSerdeFactory, systems.kafka.default.stream.replication.factor=1, stores.wikipedia-stats.changelog=kafka.wikipedia-stats-changelog, streams.en-wiktionary.samza.system=wikipedia, serializers.registry.integer.class=org.apache.samza.serializers.IntegerSerdeFactory, app.runner.class=org.apache.samza.runtime.RemoteApplicationRunner, metrics.reporters=snapshot,jmx, app.run.id=1517014323667-631c2b38, job.name=wikipedia-application, systems.kafka.producer.bootstrap.servers=localhost:9092, metrics.reporter.snapshot.class=org.apache.samza.metrics.reporter.MetricsSnapshotReporterFactory, stores.wikipedia-stats.msg.serde=integer, streams.en-wikipedia.samza.system=wikipedia, systems.wikipedia.port=6667, stores.wikipedia-stats.factory=org.apache.samza.storage.kv.RocksDbKeyValueStorageEngineFactory, samza.internal.execution.plan={"jobs":[{"jobName":"wikipedia-application","jobId":"1","operatorGraph":{"inputStreams":[{"streamId":"en-wikipedia","nextOperatorIds":["wikipedia-application-1-merge-3"]},{"streamId":"en-wiktionary","nextOperatorIds":["wikipedia-application-1-merge-3"]},{"streamId":"en-wikinews","nextOperatorIds":["wikipedia-application-1-merge-3"]}],"outputStreams":[{"streamId":"wikipedia-stats","nextOperatorIds":[]}],"operators":{"wikipedia-application-1-map-4":{"opId":"wikipedia-application-1-map-4","opCode":"MAP","sourceLocation":"WikipediaApplication.java:114","nextOperatorIds":["wikipedia-application-1-window-statsWindow"]},"wikipedia-application-1-map-6":{"opId":"wikipedia-application-1-map-6","opCode":"MAP","sourceLocation":"WikipediaApplication.java:117","nextOperatorIds":["wikipedia-application-1-send_to-7"]},"wikipedia-application-1-send_to-7":{"opId":"wikipedia-application-1-send_to-7","opCode":"SEND_TO","sourceLocation":"WikipediaApplication.java:118","outputStreamId":"wikipedia-stats","nextOperatorIds":[]},"wikipedia-application-1-merge-3":{"opId":"wikipedia-application-1-merge-3","opCode":"MERGE","sourceLocation":"WikipediaApplication.java:110","nextOperatorIds":["wikipedia-application-1-map-4"]},"wikipedia-application-1-window-statsWindow":{"opId":"wikipedia-application-1-window-statsWindow","opCode":"WINDOW","sourceLocation":"WikipediaApplication.java:115","nextOperatorIds":["wikipedia-application-1-map-6"]}}}}],"sourceStreams":{"en-wikipedia":{"streamSpec":{"id":"en-wikipedia","systemName":"wikipedia","physicalName":"#en.wikipedia","partitionCount":1},"sourceJobs":[],"targetJobs":["wikipedia-application"]},"en-wiktionary":{"streamSpec":{"id":"en-wiktionary","systemName":"wikipedia","physicalName":"#en.wiktionary","partitionCount":1},"sourceJobs":[],"targetJobs":["wikipedia-application"]},"en-wikinews":{"streamSpec":{"id":"en-wikinews","systemName":"wikipedia","physicalName":"#en.wikinews","partitionCount":1},"sourceJobs":[],"targetJobs":["wikipedia-application"]}},"sinkStreams":{"wikipedia-stats":{"streamSpec":{"id":"wikipedia-stats","systemName":"kafka","physicalName":"wikipedia-stats","partitionCount":1},"sourceJobs":["wikipedia-application"],"targetJobs":[]}},"intermediateStreams":{},"applicationName":"wikipedia-application","applicationId":"1"}, streams.en-wiktionary.samza.key.serde=NoOpSerde-35a2121d-6493-45a5-b28f-31c85f75c1fe, streams.wikipedia-stats.samza.msg.serde=JsonSerdeV2-2f0ae9b0-6485-4d23-af27-01500a7e6fa0, job.factory.class=org.apache.samza.job.yarn.YarnJobFactory, yarn.package.path=file:///vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz, metrics.reporter.jmx.class=org.apache.samza.metrics.reporter.JmxReporterFactory, app.mode=STREAM, stores.wikipedia-application-1-window-statsWindow.changelog=wikipedia-application-1-window-statsWindow, app.class=samza.examples.wikipedia.application.WikipediaApplication, metrics.reporter.snapshot.stream=kafka.metrics, streams.en-wikipedia.samza.msg.serde=NoOpSerde-8be54df2-2678-4412-9ca6-9f55d1f86bf4, streams.en-wikinews.samza.system=wikipedia, systems.wikipedia.samza.factory=samza.examples.wikipedia.system.WikipediaSystemFactory, serializers.registry.NoOpSerde-35a2121d-6493-45a5-b28f-31c85f75c1fe.samza.serialized.instance=rO0ABXNyACZvcmcuYXBhY2hlLnNhbXphLnNlcmlhbGl6ZXJzLk5vT3BTZXJkZVqY1KUqHcwaAgAAeHA=, job.default.system=kafka, stores.wikipedia-application-1-window-statsWindow.key.serde=TimeSeriesKeySerde-4aa75d71-7ef1-4eae-b92d-4b64a0e80339, serializers.registry.NoOpSerde-0b8547f7-8415-46e9-9b5c-dcd3621ba856.samza.serialized.instance=rO0ABXNyACZvcmcuYXBhY2hlLnNhbXphLnNlcmlhbGl6ZXJzLk5vT3BTZXJkZVqY1KUqHcwaAgAAeHA=, streams.en-wikipedia.samza.physical.name=#en.wikipedia, serializers.registry.NoOpSerde-3de313ab-12cc-4a7c-8e74-66eda544dedb.samza.serialized.instance=rO0ABXNyACZvcmcuYXBhY2hlLnNhbXphLnNlcmlhbGl6ZXJzLk5vT3BTZXJkZVqY1KUqHcwaAgAAeHA=, systems.wikipedia.host=irc.wikimedia.org, stores.wikipedia-application-1-window-statsWindow.msg.serde=WikipediaStatsSerde-f9a335a7-d42b-47c6-a6ec-5b95acdc04e4, streams.en-wikinews.samza.msg.serde=NoOpSerde-8be54df2-2678-4412-9ca6-9f55d1f86bf4, streams.en-wiktionary.samza.physical.name=#en.wiktionary, streams.wikipedia-stats.samza.key.serde=NoOpSerde-3de313ab-12cc-4a7c-8e74-66eda544dedb, systems.kafka.consumer.zookeeper.connect=localhost:2181, streams.en-wikinews.samza.physical.name=#en.wikinews, serializers.registry.NoOpSerde-8be54df2-2678-4412-9ca6-9f55d1f86bf4.samza.serialized.instance=rO0ABXNyACZvcmcuYXBhY2hlLnNhbXphLnNlcmlhbGl6ZXJzLk5vT3BTZXJkZVqY1KUqHcwaAgAAeHA=, task.inputs=wikipedia.#en.wikipedia,wikipedia.#en.wiktionary,wikipedia.#en.wikinews, streams.en-wikipedia.samza.key.serde=NoOpSerde-8564d200-d7e6-4909-8393-7612dc20a3db, task.window.ms=10000, serializers.registry.NoOpSerde-8564d200-d7e6-4909-8393-7612dc20a3db.samza.serialized.instance=rO0ABXNyACZvcmcuYXBhY2hlLnNhbXphLnNlcmlhbGl6ZXJzLk5vT3BTZXJkZVqY1KUqHcwaAgAAeHA=, serializers.registry.WikipediaStatsSerde-f9a335a7-d42b-47c6-a6ec-5b95acdc04e4.samza.serialized.instance=rO0ABXNyAFxzYW16YS5leGFtcGxlcy53aWtpcGVkaWEuYXBwbGljYXRpb24uV2lraXBlZGlhQXBwbGljYXRpb24kV2lraXBlZGlhU3RhdHMkV2lraXBlZGlhU3RhdHNTZXJkZeNOsFPH+MCtAgAAeHA=, streams.en-wikinews.samza.key.serde=NoOpSerde-0b8547f7-8415-46e9-9b5c-dcd3621ba856, streams.en-wiktionary.samza.msg.serde=NoOpSerde-8be54df2-2678-4412-9ca6-9f55d1f86bf4, stores.wikipedia-stats.key.serde=string, serializers.registry.JsonSerdeV2-2f0ae9b0-6485-4d23-af27-01500a7e6fa0.samza.serialized.instance=rO0ABXNyAChvcmcuYXBhY2hlLnNhbXphLnNlcmlhbGl6ZXJzLkpzb25TZXJkZVYyfnqWnLch0OMCAAFMAAVjbGF6enQAEUxqYXZhL2xhbmcvQ2xhc3M7eHB2cgBOc2FtemEuZXhhbXBsZXMud2lraXBlZGlhLmFwcGxpY2F0aW9uLldpa2lwZWRpYUFwcGxpY2F0aW9uJFdpa2lwZWRpYVN0YXRzT3V0cHV0AAAAAAAAAAAAAAB4cA==, stores.wikipedia-application-1-window-statsWindow.factory=org.apache.samza.storage.kv.RocksDbKeyValueStorageEngineFactory}
+2018-01-27 00:52:19.778 [main] CoordinatorStreamSystemProducer [INFO] Starting coordinator stream producer.
+2018-01-27 00:52:19.814 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:19.826 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:19.885 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 00:52:19.885 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 00:52:19.886 [main] CoordinatorStreamSystemConsumer [INFO] Coordinator stream consumer already started
+2018-01-27 00:52:19.890 [main] CoordinatorStreamSystemProducer [INFO] Coordinator stream producer already started
+2018-01-27 00:52:19.890 [main] CoordinatorStreamSystemConsumer [INFO] Coordinator stream consumer already started
+2018-01-27 00:52:19.895 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:19.895 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:19.896 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-7db1f853-abc8-4556-8caa-309754da3979
+2018-01-27 00:52:19.896 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:19.909 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-application-1-window-statsWindow with replication factor: 1
+2018-01-27 00:52:19.910 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-stats-changelog with replication factor: 1
+2018-01-27 00:52:19.917 [main] CoordinatorStreamSystemConsumer [INFO] Bootstrapping configuration from coordinator stream.
+2018-01-27 00:52:19.950 [main] JobModelManager$ [INFO] SystemStreamPartitionGrouper org.apache.samza.container.grouper.stream.GroupByPartition@7502291e has grouped the SystemStreamPartitions into 1 tasks with the following taskNames: [Partition 0]
+2018-01-27 00:52:19.957 [main] JobModelManager$ [INFO] New task Partition 0 is being assigned changelog partition 0.
+2018-01-27 00:52:19.958 [main] TaskConfig [INFO] No task.name.grouper.factory configuration, using 'org.apache.samza.container.grouper.task.GroupByContainerCountFactory'
+2018-01-27 00:52:19.997 [main] log [INFO] Logging initialized @3641ms
+2018-01-27 00:52:20.119 [main] JobModelManager$ [INFO] Saving task-to-changelog partition mapping: Map(Partition 0 -> 0)
+2018-01-27 00:52:20.311 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:20.316 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:20.317 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-53cdb5d8-6437-446a-b2c1-5b1c6e91d122
+2018-01-27 00:52:20.317 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:20.318 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-application-1-window-statsWindow with replication factor: 1
+2018-01-27 00:52:20.320 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-stats-changelog with replication factor: 1
+2018-01-27 00:52:20.325 [main] KafkaSystemAdmin [INFO] Create topic wikipedia-stats-changelog in system kafka
+2018-01-27 00:52:20.411 [ZkClient-EventThread-14-localhost:2181] ZkEventThread [INFO] Starting ZkClient event thread.
+2018-01-27 00:52:20.425 [main] ZooKeeper [INFO] Client environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+2018-01-27 00:52:20.425 [main] ZooKeeper [INFO] Client environment:host.name=ubuntu-xenial
+2018-01-27 00:52:20.425 [main] ZooKeeper [INFO] Client environment:java.version=1.8.0_151
+2018-01-27 00:52:20.425 [main] ZooKeeper [INFO] Client environment:java.vendor=Oracle Corporation
+2018-01-27 00:52:20.425 [main] ZooKeeper [INFO] Client environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2018-01-27 00:52:20.426 [main] ZooKeeper [INFO] Client environment:java.class.path=/vagrant/hello-samza/deploy/yarn/etc/hadoop:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/activation-1.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/amazon-kinesis-client-1.7.5.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/amazon-kinesis-producer-0.10.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aopalliance-1.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/apacheds-i18n-2.0.0-M15.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/apacheds-kerberos-codec-2.0.0-M15.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/api-asn1-api-1.0.0-M20.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/api-util-1.0.0-M20.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/asm-3.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/avro-1.7.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aws-java-sdk-cloudwatch-1.11.115.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aws-java-sdk-core-1.11.152.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aws-java-sdk-dynamodb-1.11.115.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aws-java-sdk-kinesis-1.11.152.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aws-java-sdk-kms-1.11.115.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/aws-java-sdk-s3-1.11.115.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/azure-eventhubs-0.14.5.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/azure-keyvault-core-0.8.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/azure-storage-5.3.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-beanutils-1.7.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-beanutils-core-1.8.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-cli-1.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-codec-1.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-collections-3.2.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-collections4-4.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-compress-1.4.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-configuration-1.6.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-daemon-1.0.13.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-digester-1.8.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-el-1.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-httpclient-3.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-io-2.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-lang-2.6.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-lang3-3.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-logging-1.1.3.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-math3-3.1.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/commons-net-3.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/curator-client-2.6.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/curator-framework-2.6.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/curator-recipes-2.6.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/grizzled-slf4j_2.11-1.3.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/gson-2.2.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/guava-17.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/guice-3.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/guice-servlet-3.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-annotations-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-auth-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-common-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-hdfs-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-yarn-api-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-yarn-client-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hadoop-yarn-common-2.6.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/hello-samza-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/htrace-core-3.0.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/httpclient-4.2.5.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/httpcore-4.2.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/ion-java-1.0.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/irclib-1.10.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-annotations-2.6.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-core-2.8.8.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-core-asl-1.9.7.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-databind-2.6.6.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-dataformat-cbor-2.6.6.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-jaxrs-1.9.13.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-mapper-asl-1.9.13.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jackson-xc-1.9.13.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jasper-compiler-5.5.23.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jasper-runtime-5.5.23.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/javax.inject-1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/java-xmlbuilder-0.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/javax.servlet-api-3.1.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jaxb-api-2.2.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jaxb-impl-2.2.3-1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jersey-client-1.9.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jersey-core-1.9.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jersey-guice-1.9.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jersey-json-1.9.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jersey-server-1.9.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jets3t-0.9.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jettison-1.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-6.1.26.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-http-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-io-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-security-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-server-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-servlet-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-util-6.1.26.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-util-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-webapp-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jetty-xml-9.2.7.v20150116.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jline-0.9.94.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jmespath-java-1.11.152.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/joda-time-2.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jopt-simple-3.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jsch-0.1.42.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jsp-api-2.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/jsr305-1.3.9.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/junit-3.8.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/juniversalchardet-1.0.3.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/kafka_2.11-0.10.1.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/kafka-clients-0.10.1.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/log4j-1.2.17.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/lz4-1.3.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/metrics-core-2.2.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/metrics-core-3.1.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/mime-util-2.1.3.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/netty-3.6.2.Final.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/paranamer-2.3.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/protobuf-java-2.5.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/proton-j-0.19.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/rocksdbjni-5.7.3.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-api-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-aws-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-azure-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-core_2.11-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-core_2.12-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-kafka_2.11-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-kv_2.11-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-kv-rocksdb_2.11-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-log4j-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/samza-yarn_2.11-0.14.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scala-compiler-2.11.8.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scala-library-2.11.8.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scala-parser-combinators_2.11-1.0.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scala-reflect-2.11.8.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scalate-core_2.11-1.8.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scalate-util_2.11-1.8.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scalatra_2.11-2.5.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scalatra-common_2.11-2.5.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scalatra-scalate_2.11-2.5.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/scala-xml_2.11-1.0.4.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/servlet-api-2.5.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/slf4j-api-1.6.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/slf4j-log4j12-1.6.2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/slf4j-simple-1.7.12.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/snappy-java-1.1.2.6.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/stax-api-1.0-2.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/xercesImpl-2.9.1.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/xml-apis-1.3.04.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/xmlenc-0.52.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/xz-1.0.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/zkclient-0.8.jar:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/lib/zookeeper-3.4.6.jar
+2018-01-27 00:52:20.427 [main] ZooKeeper [INFO] Client environment:java.library.path=:/vagrant/hello-samza/deploy/yarn/lib/native:/vagrant/hello-samza/deploy/yarn/lib/native:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2018-01-27 00:52:20.427 [main] ZooKeeper [INFO] Client environment:java.io.tmpdir=/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/tmp
+2018-01-27 00:52:20.427 [main] ZooKeeper [INFO] Client environment:java.compiler=<NA>
+2018-01-27 00:52:20.427 [main] ZooKeeper [INFO] Client environment:os.name=Linux
+2018-01-27 00:52:20.427 [main] ZooKeeper [INFO] Client environment:os.arch=amd64
+2018-01-27 00:52:20.428 [main] ZooKeeper [INFO] Client environment:os.version=4.4.0-112-generic
+2018-01-27 00:52:20.428 [main] ZooKeeper [INFO] Client environment:user.name=ubuntu
+2018-01-27 00:52:20.428 [main] ZooKeeper [INFO] Client environment:user.home=/home/ubuntu
+2018-01-27 00:52:20.428 [main] ZooKeeper [INFO] Client environment:user.dir=/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001
+2018-01-27 00:52:20.430 [main] ZooKeeper [INFO] Initiating client connection, connectString=localhost:2181 sessionTimeout=6000 watcher=org.I0Itec.zkclient.ZkClient@a202ccb
+2018-01-27 00:52:20.457 [main] ZkClient [INFO] Waiting for keeper state SyncConnected
+2018-01-27 00:52:20.462 [main-SendThread(localhost:2181)] ClientCnxn [INFO] Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error)
+2018-01-27 00:52:20.463 [main-SendThread(localhost:2181)] ClientCnxn [INFO] Socket connection established to localhost/127.0.0.1:2181, initiating session
+2018-01-27 00:52:20.475 [main-SendThread(localhost:2181)] ClientCnxn [INFO] Session establishment complete on server localhost/127.0.0.1:2181, sessionid = 0x1613516935c0006, negotiated timeout = 6000
+2018-01-27 00:52:20.478 [main-EventThread] ZkClient [INFO] zookeeper state changed (SyncConnected)
+2018-01-27 00:52:20.869 [main] AdminUtils$ [INFO] Topic creation {"version":1,"partitions":{"0":[0]}}
+2018-01-27 00:52:20.883 [ZkClient-EventThread-14-localhost:2181] ZkEventThread [INFO] Terminate ZkClient event thread.
+2018-01-27 00:52:20.894 [main] ZooKeeper [INFO] Session: 0x1613516935c0006 closed
+2018-01-27 00:52:20.894 [main-EventThread] ClientCnxn [INFO] EventThread shut down
+2018-01-27 00:52:20.899 [main] JobModelManager$ [INFO] Created changelog stream wikipedia-stats-changelog.
+2018-01-27 00:52:20.902 [main] KafkaSystemAdmin [INFO] Validating topic wikipedia-stats-changelog.
+2018-01-27 00:52:20.906 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:20.909 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:20.910 [main] VerifiableProperties [INFO] Property metadata.broker.list is overridden to localhost:9092
+2018-01-27 00:52:20.910 [main] VerifiableProperties [INFO] Property request.timeout.ms is overridden to 30000
+2018-01-27 00:52:20.911 [main] ClientUtils$ [INFO] Fetching metadata from broker BrokerEndPoint(0,localhost,9092) with correlation id 0 for 1 topic(s) Set(wikipedia-stats-changelog)
+2018-01-27 00:52:20.912 [main] SyncProducer [INFO] Connected to localhost:9092 for producing
+2018-01-27 00:52:20.924 [main] SyncProducer [INFO] Disconnecting from localhost:9092
+2018-01-27 00:52:20.926 [main] KafkaSystemAdmin [WARN] While trying to validate topic wikipedia-stats-changelog: kafka.common.LeaderNotAvailableException. Retrying.
+2018-01-27 00:52:21.033 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:21.035 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:21.037 [main] VerifiableProperties [INFO] Property metadata.broker.list is overridden to localhost:9092
+2018-01-27 00:52:21.038 [main] VerifiableProperties [INFO] Property request.timeout.ms is overridden to 30000
+2018-01-27 00:52:21.038 [main] ClientUtils$ [INFO] Fetching metadata from broker BrokerEndPoint(0,localhost,9092) with correlation id 0 for 1 topic(s) Set(wikipedia-stats-changelog)
+2018-01-27 00:52:21.039 [main] SyncProducer [INFO] Connected to localhost:9092 for producing
+2018-01-27 00:52:21.041 [main] SyncProducer [INFO] Disconnecting from localhost:9092
+2018-01-27 00:52:21.044 [main] KafkaSystemAdmin [INFO] Successfully validated topic wikipedia-stats-changelog.
+2018-01-27 00:52:21.045 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:21.045 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:21.046 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-3c596c24-2551-4c18-b82b-50ccbc08b956
+2018-01-27 00:52:21.046 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:21.047 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-application-1-window-statsWindow with replication factor: 1
+2018-01-27 00:52:21.047 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-stats-changelog with replication factor: 1
+2018-01-27 00:52:21.048 [main] KafkaSystemAdmin [INFO] Create topic wikipedia-application-1-window-statsWindow in system kafka
+2018-01-27 00:52:21.050 [main] ZooKeeper [INFO] Initiating client connection, connectString=localhost:2181 sessionTimeout=6000 watcher=org.I0Itec.zkclient.ZkClient@6d8792db
+2018-01-27 00:52:21.050 [ZkClient-EventThread-17-localhost:2181] ZkEventThread [INFO] Starting ZkClient event thread.
+2018-01-27 00:52:21.051 [main] ZkClient [INFO] Waiting for keeper state SyncConnected
+2018-01-27 00:52:21.056 [main-SendThread(localhost:2181)] ClientCnxn [INFO] Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error)
+2018-01-27 00:52:21.056 [main-SendThread(localhost:2181)] ClientCnxn [INFO] Socket connection established to localhost/127.0.0.1:2181, initiating session
+2018-01-27 00:52:21.059 [main-SendThread(localhost:2181)] ClientCnxn [INFO] Session establishment complete on server localhost/127.0.0.1:2181, sessionid = 0x1613516935c0007, negotiated timeout = 6000
+2018-01-27 00:52:21.059 [main-EventThread] ZkClient [INFO] zookeeper state changed (SyncConnected)
+2018-01-27 00:52:21.094 [main] AdminUtils$ [INFO] Topic creation {"version":1,"partitions":{"0":[0]}}
+2018-01-27 00:52:21.097 [ZkClient-EventThread-17-localhost:2181] ZkEventThread [INFO] Terminate ZkClient event thread.
+2018-01-27 00:52:21.110 [main] ZooKeeper [INFO] Session: 0x1613516935c0007 closed
+2018-01-27 00:52:21.110 [main-EventThread] ClientCnxn [INFO] EventThread shut down
+2018-01-27 00:52:21.117 [main] JobModelManager$ [INFO] Created changelog stream wikipedia-application-1-window-statsWindow.
+2018-01-27 00:52:21.120 [main] KafkaSystemAdmin [INFO] Validating topic wikipedia-application-1-window-statsWindow.
+2018-01-27 00:52:21.121 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:21.121 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:21.121 [main] VerifiableProperties [INFO] Property metadata.broker.list is overridden to localhost:9092
+2018-01-27 00:52:21.121 [main] VerifiableProperties [INFO] Property request.timeout.ms is overridden to 30000
+2018-01-27 00:52:21.122 [main] ClientUtils$ [INFO] Fetching metadata from broker BrokerEndPoint(0,localhost,9092) with correlation id 0 for 1 topic(s) Set(wikipedia-application-1-window-statsWindow)
+2018-01-27 00:52:21.123 [main] SyncProducer [INFO] Connected to localhost:9092 for producing
+2018-01-27 00:52:21.133 [main] SyncProducer [INFO] Disconnecting from localhost:9092
+2018-01-27 00:52:21.135 [main] KafkaSystemAdmin [WARN] While trying to validate topic wikipedia-application-1-window-statsWindow: kafka.common.LeaderNotAvailableException. Retrying.
+2018-01-27 00:52:21.246 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:21.246 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:21.247 [main] VerifiableProperties [INFO] Property metadata.broker.list is overridden to localhost:9092
+2018-01-27 00:52:21.248 [main] VerifiableProperties [INFO] Property request.timeout.ms is overridden to 30000
+2018-01-27 00:52:21.248 [main] ClientUtils$ [INFO] Fetching metadata from broker BrokerEndPoint(0,localhost,9092) with correlation id 0 for 1 topic(s) Set(wikipedia-application-1-window-statsWindow)
+2018-01-27 00:52:21.249 [main] SyncProducer [INFO] Connected to localhost:9092 for producing
+2018-01-27 00:52:21.251 [main] SyncProducer [INFO] Disconnecting from localhost:9092
+2018-01-27 00:52:21.253 [main] KafkaSystemAdmin [INFO] Successfully validated topic wikipedia-application-1-window-statsWindow.
+2018-01-27 00:52:21.275 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:21.276 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:21.276 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-a68d6df6-1bcb-42cf-829d-47de6cb04d3f
+2018-01-27 00:52:21.276 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:21.280 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-application-1-window-statsWindow with replication factor: 1
+2018-01-27 00:52:21.281 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-stats-changelog with replication factor: 1
+2018-01-27 00:52:21.307 [main] YarnResourceManagerFactory [INFO] Creating an instance of a cluster resource manager for Yarn. 
+2018-01-27 00:52:21.569 [main] MetricsSnapshotReporterFactory [INFO] Creating new metrics snapshot reporter.
+2018-01-27 00:52:21.579 [main] MetricsSnapshotReporterFactory [WARN] Unable to find implementation version in jar's meta info. Defaulting to 0.0.1.
+2018-01-27 00:52:21.584 [main] MetricsSnapshotReporterFactory [INFO] Got system stream SystemStream [system=kafka, stream=metrics].
+2018-01-27 00:52:21.587 [main] MetricsSnapshotReporterFactory [INFO] Got system factory org.apache.samza.system.kafka.KafkaSystemFactory@2f3c6ac4.
+2018-01-27 00:52:21.589 [main] KafkaSystemFactory$ [WARN] System name 'kafka' is being used as a changelog. Disabling compression since Kafka does not support compression for log compacted topics.
+2018-01-27 00:52:21.591 [main] MetricsSnapshotReporterFactory [INFO] Got producer org.apache.samza.system.kafka.KafkaSystemProducer@3a0807b7.
+2018-01-27 00:52:21.603 [main] MetricsSnapshotReporterFactory [INFO] Got serde null.
+2018-01-27 00:52:21.605 [main] MetricsSnapshotReporterFactory [INFO] Setting polling interval to 60
+2018-01-27 00:52:21.633 [main] MetricsSnapshotReporter [INFO] got metrics snapshot reporter properties [job name: wikipedia-application, job id: 1, containerName: ApplicationMaster, version: 0.0.1, samzaVersion: 0.14.0, host: 10.0.2.15, pollingInterval 60]
+2018-01-27 00:52:21.634 [main] MetricsSnapshotReporter [INFO] Registering MetricsSnapshotReporterFactory with producer.
+2018-01-27 00:52:21.637 [main] JmxReporterFactory [INFO] Creating JMX reporter with  name jmx.
+2018-01-27 00:52:21.644 [main] MetricsSnapshotReporter [INFO] Registering ApplicationMaster with producer.
+2018-01-27 00:52:21.798 [main] YarnClusterResourceManager [INFO] Initialized YarnAppState: YarnAppState{, taskId=-1, amContainerId=container_1517014133362_0001_01_000001, nodeHost='ubuntu-xenial', nodePort=38185, nodeHttpPort=8042, appAttemptId=appattempt_1517014133362_0001_000001, coordinatorUrl=null, rpcUrl=null, trackingUrl=null, runningYarnContainers={}, failedContainersStatus={}}
+2018-01-27 00:52:21.800 [main] YarnClusterResourceManager [INFO] ContainerID str container_1517014133362_0001_01_000001, Nodehost  ubuntu-xenial , Nodeport  38185 , NodeHttpport 8042
+2018-01-27 00:52:21.811 [main] ContainerManagementProtocolProxy [INFO] yarn.client.max-cached-nodemanagers-proxies : 0
+2018-01-27 00:52:21.818 [main] MetricsSnapshotReporterFactory [INFO] Creating new metrics snapshot reporter.
+2018-01-27 00:52:21.819 [main] MetricsSnapshotReporterFactory [WARN] Unable to find implementation version in jar's meta info. Defaulting to 0.0.1.
+2018-01-27 00:52:21.822 [main] MetricsSnapshotReporterFactory [INFO] Got system stream SystemStream [system=kafka, stream=metrics].
+2018-01-27 00:52:21.822 [main] MetricsSnapshotReporterFactory [INFO] Got system factory org.apache.samza.system.kafka.KafkaSystemFactory@27a0a5a2.
+2018-01-27 00:52:21.823 [main] KafkaSystemFactory$ [WARN] System name 'kafka' is being used as a changelog. Disabling compression since Kafka does not support compression for log compacted topics.
+2018-01-27 00:52:21.823 [main] MetricsSnapshotReporterFactory [INFO] Got producer org.apache.samza.system.kafka.KafkaSystemProducer@7692cd34.
+2018-01-27 00:52:21.824 [main] MetricsSnapshotReporterFactory [INFO] Got serde null.
+2018-01-27 00:52:21.824 [main] MetricsSnapshotReporterFactory [INFO] Setting polling interval to 60
+2018-01-27 00:52:21.842 [main] MetricsSnapshotReporter [INFO] got metrics snapshot reporter properties [job name: wikipedia-application, job id: 1, containerName: ApplicationMaster, version: 0.0.1, samzaVersion: 0.14.0, host: 10.0.2.15, pollingInterval 60]
+2018-01-27 00:52:21.843 [main] MetricsSnapshotReporter [INFO] Registering MetricsSnapshotReporterFactory with producer.
+2018-01-27 00:52:21.844 [main] JmxReporterFactory [INFO] Creating JMX reporter with  name jmx.
+2018-01-27 00:52:21.846 [main] MetricsSnapshotReporter [INFO] Registering ApplicationMaster with producer.
+2018-01-27 00:52:21.848 [main] ContainerProcessManager [INFO] finished initialization of samza task manager
+2018-01-27 00:52:21.875 [main] JmxServer [INFO] According to Util.getLocalHost.getHostName we are 10.0.2.15
+2018-01-27 00:52:21.979 [main] JmxServer [INFO] Started JmxServer registry port=39529 server port=44204 url=service:jmx:rmi://localhost:44204/jndi/rmi://localhost:39529/jmxrmi
+2018-01-27 00:52:21.981 [main] JmxServer [INFO] If you are tunneling, you might want to try JmxServer registry port=39529 server port=44204 url=service:jmx:rmi://10.0.2.15:44204/jndi/rmi://10.0.2.15:39529/jmxrmi
+2018-01-27 00:52:21.982 [main] ClusterBasedJobCoordinator [INFO] Starting Cluster Based Job Coordinator
+2018-01-27 00:52:22.021 [main] MetricsSnapshotReporter [INFO] Starting producer.
+2018-01-27 00:52:22.022 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:22.022 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:22.025 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 00:52:22.025 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 00:52:22.029 [main] AppInfoParser [WARN] Error registering AppInfo mbean
+javax.management.InstanceAlreadyExistsException: kafka.producer:type=app-info,id=samza_producer-wikipedia_application-1
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:58)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:331)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:163)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemProducer.start(KafkaSystemProducer.scala:53)
+	at org.apache.samza.metrics.reporter.MetricsSnapshotReporter.start(MetricsSnapshotReporter.scala:79)
+	at org.apache.samza.metrics.ContainerProcessManagerMetrics$$anonfun$start$1.apply(ContainerProcessManagerMetrics.scala:69)
+	at org.apache.samza.metrics.ContainerProcessManagerMetrics$$anonfun$start$1.apply(ContainerProcessManagerMetrics.scala:69)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:893)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1336)
+	at scala.collection.MapLike$DefaultValuesIterable.foreach(MapLike.scala:206)
+	at org.apache.samza.metrics.ContainerProcessManagerMetrics.start(ContainerProcessManagerMetrics.scala:69)
+	at org.apache.samza.clustermanager.ContainerProcessManager.start(ContainerProcessManager.java:171)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.run(ClusterBasedJobCoordinator.java:188)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.main(ClusterBasedJobCoordinator.java:298)
+2018-01-27 00:52:22.035 [main] MetricsSnapshotReporter [INFO] Starting reporter timer.
+2018-01-27 00:52:22.035 [main] ContainerProcessManager [INFO] Starting Container Process Manager
+2018-01-27 00:52:22.052 [main] MetricsSnapshotReporter [INFO] Starting producer.
+2018-01-27 00:52:22.053 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:22.054 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:22.057 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 00:52:22.059 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 00:52:22.060 [main] AppInfoParser [WARN] Error registering AppInfo mbean
+javax.management.InstanceAlreadyExistsException: kafka.producer:type=app-info,id=samza_producer-wikipedia_application-1
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:58)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:331)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:163)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemProducer.start(KafkaSystemProducer.scala:53)
+	at org.apache.samza.metrics.reporter.MetricsSnapshotReporter.start(MetricsSnapshotReporter.scala:79)
+	at org.apache.samza.job.yarn.SamzaAppMasterMetrics$$anonfun$start$1.apply(SamzaAppMasterMetrics.scala:58)
+	at org.apache.samza.job.yarn.SamzaAppMasterMetrics$$anonfun$start$1.apply(SamzaAppMasterMetrics.scala:58)
+	at scala.collection.Iterator$class.foreach(Iterator.scala:893)
+	at scala.collection.AbstractIterator.foreach(Iterator.scala:1336)
+	at scala.collection.MapLike$DefaultValuesIterable.foreach(MapLike.scala:206)
+	at org.apache.samza.job.yarn.SamzaAppMasterMetrics.start(SamzaAppMasterMetrics.scala:58)
+	at org.apache.samza.job.yarn.YarnClusterResourceManager.start(YarnClusterResourceManager.java:179)
+	at org.apache.samza.clustermanager.ContainerProcessManager.start(ContainerProcessManager.java:174)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.run(ClusterBasedJobCoordinator.java:188)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.main(ClusterBasedJobCoordinator.java:298)
+2018-01-27 00:52:22.060 [main] MetricsSnapshotReporter [INFO] Starting reporter timer.
+2018-01-27 00:52:22.062 [main] SamzaYarnAppMasterService [INFO] Starting webapp at a random rpc and tracking port
+2018-01-27 00:52:22.148 [kafka-producer-network-thread | samza_producer-wikipedia_application-1] NetworkClient [WARN] Error while fetching metadata with correlation id 0 : {metrics=LEADER_NOT_AVAILABLE}
+2018-01-27 00:52:22.174 [kafka-producer-network-thread | samza_producer-wikipedia_application-1] NetworkClient [WARN] Error while fetching metadata with correlation id 0 : {metrics=LEADER_NOT_AVAILABLE}
+2018-01-27 00:52:22.298 [main] ClientHelper [INFO] trying to connect to RM 127.0.0.1:8032
+2018-01-27 00:52:22.437 [main] RMProxy [INFO] Connecting to ResourceManager at /127.0.0.1:8032
+2018-01-27 00:52:23.432 [main] Server [INFO] jetty-9.2.7.v20150116
+2018-01-27 00:52:23.845 [main] ServletTemplateEngine [INFO] Scalate template engine using working directory: /tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/tmp/scalate-5229287659168898868-workdir
+2018-01-27 00:52:23.850 [main] ContextHandler [INFO] Started o.e.j.s.ServletContextHandler@a137d7a{/,jar:file:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/filecache/10/hello-samza-0.14.0-dist.tar.gz/lib/samza-yarn_2.11-0.14.0.jar!/scalate,AVAILABLE}
+2018-01-27 00:52:23.862 [main] ServerConnector [INFO] Started ServerConnector@44ff41cd{HTTP/1.1}{0.0.0.0:36755}
+2018-01-27 00:52:23.862 [main] Server [INFO] Started @7507ms
+2018-01-27 00:52:23.883 [main] HttpServer [INFO] Started HttpServer on: http://10.0.2.15:36755/
+2018-01-27 00:52:23.893 [main] Server [INFO] jetty-9.2.7.v20150116
+2018-01-27 00:52:23.943 [main] ServletTemplateEngine [INFO] Scalate template engine using working directory: /tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/container_1517014133362_0001_01_000001/__package/tmp/scalate-3414310801200713130-workdir
+2018-01-27 00:52:23.943 [main] ContextHandler [INFO] Started o.e.j.s.ServletContextHandler@213c3543{/,jar:file:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517014133362_0001/filecache/10/hello-samza-0.14.0-dist.tar.gz/lib/samza-yarn_2.11-0.14.0.jar!/scalate,AVAILABLE}
+2018-01-27 00:52:23.945 [main] ServerConnector [INFO] Started ServerConnector@4a23d7a5{HTTP/1.1}{0.0.0.0:42079}
+2018-01-27 00:52:23.945 [main] Server [INFO] Started @7590ms
+2018-01-27 00:52:23.965 [main] HttpServer [INFO] Started HttpServer on: http://10.0.2.15:42079/
+2018-01-27 00:52:23.968 [main] Server [INFO] jetty-9.2.7.v20150116
+2018-01-27 00:52:23.973 [main] ContextHandler [INFO] Started o.e.j.s.ServletContextHandler@6f4ade6e{/,null,AVAILABLE}
+2018-01-27 00:52:23.974 [main] ServerConnector [INFO] Started ServerConnector@39e43310{HTTP/1.1}{0.0.0.0:40692}
+2018-01-27 00:52:23.975 [main] Server [INFO] Started @7620ms
+2018-01-27 00:52:24.000 [main] HttpServer [INFO] Started HttpServer on: http://10.0.2.15:40692/
+2018-01-27 00:52:24.025 [main] JobModelManager [INFO] Started HTTP server: http://10.0.2.15:40692/
+2018-01-27 00:52:24.081 [main] VerifiableProperties [INFO] Verifying properties
+2018-01-27 00:52:24.081 [main] VerifiableProperties [INFO] Property client.id is overridden to samza_admin-wikipedia_application-1
+2018-01-27 00:52:24.081 [main] VerifiableProperties [INFO] Property group.id is overridden to undefined-samza-consumer-group-8e203bb3-f77a-464c-9b9f-6e1d7f3b6e90
+2018-01-27 00:52:24.082 [main] VerifiableProperties [INFO] Property zookeeper.connect is overridden to localhost:2181
+2018-01-27 00:52:24.082 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-application-1-window-statsWindow with replication factor: 1
+2018-01-27 00:52:24.086 [main] KafkaSystemFactory [INFO] Creating topic meta information for topic: wikipedia-stats-changelog with replication factor: 1
+2018-01-27 00:52:24.087 [main] KafkaSystemFactory$ [WARN] System name 'kafka' is being used as a changelog. Disabling compression since Kafka does not support compression for log compacted topics.
+2018-01-27 00:52:24.087 [main] CoordinatorStreamSystemProducer [INFO] Starting coordinator stream producer.
+2018-01-27 00:52:24.088 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:24.088 [main] ProducerConfig [INFO] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.id = samza_producer-wikipedia_application-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 10
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2018-01-27 00:52:24.097 [main] AppInfoParser [INFO] Kafka version : 0.10.1.1
+2018-01-27 00:52:24.097 [main] AppInfoParser [INFO] Kafka commitId : f10ef2720b03b247
+2018-01-27 00:52:24.098 [main] AppInfoParser [WARN] Error registering AppInfo mbean
+javax.management.InstanceAlreadyExistsException: kafka.producer:type=app-info,id=samza_producer-wikipedia_application-1
+	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)
+	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:58)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:331)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:163)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemFactory$$anonfun$3.apply(KafkaSystemFactory.scala:90)
+	at org.apache.samza.system.kafka.KafkaSystemProducer.start(KafkaSystemProducer.scala:53)
+	at org.apache.samza.coordinator.stream.CoordinatorStreamSystemProducer.start(CoordinatorStreamSystemProducer.java:84)
+	at org.apache.samza.coordinator.stream.CoordinatorStreamWriter.start(CoordinatorStreamWriter.java:58)
+	at org.apache.samza.job.yarn.SamzaYarnAppMasterService.onInit(SamzaYarnAppMasterService.scala:67)
+	at org.apache.samza.job.yarn.YarnClusterResourceManager.start(YarnClusterResourceManager.java:180)
+	at org.apache.samza.clustermanager.ContainerProcessManager.start(ContainerProcessManager.java:174)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.run(ClusterBasedJobCoordinator.java:188)
+	at org.apache.samza.clustermanager.ClusterBasedJobCoordinator.main(ClusterBasedJobCoordinator.java:298)
+2018-01-27 00:52:24.100 [main] CoordinatorStreamWriter [INFO] Started coordinator stream writer.
+2018-01-27 00:52:24.100 [main] CoordinatorStreamWriter [INFO] sent SetConfig message with key = samza.autoscaling.server.url and value = http://10.0.2.15:40692/
+2018-01-27 00:52:24.207 [main] CoordinatorStreamWriter [INFO] Stopping the coordinator stream producer.
+2018-01-27 00:52:24.207 [main] CoordinatorStreamSystemProducer [INFO] Stopping coordinator stream producer.
+2018-01-27 00:52:24.209 [main] KafkaSystemProducer [INFO] Stopping producer for system: kafka
+2018-01-27 00:52:24.209 [main] KafkaProducer [INFO] Closing the Kafka producer with timeoutMillis = 9223372036854775807 ms.
+2018-01-27 00:52:24.226 [main] SamzaYarnAppMasterService [INFO] Webapp is started at (rpc http://10.0.2.15:36755/, tracking http://10.0.2.15:42079/, coordinator http://10.0.2.15:40692/)
+2018-01-27 00:52:24.227 [main] YarnClusterResourceManager [INFO] Starting YarnContainerManager.
+2018-01-27 00:52:24.255 [main] RMProxy [INFO] Connecting to ResourceManager at /127.0.0.1:8030
+2018-01-27 00:52:24.510 [main] SamzaYarnAppMasterLifecycle [INFO] Got AM register response. The YARN RM supports container requests with max-mem: 8192, max-cpu: 1
+2018-01-27 00:52:24.510 [main] YarnClusterResourceManager [INFO] Finished starting YarnContainerManager
+2018-01-27 00:52:24.511 [main] ContainerProcessManager [INFO] Starting the Samza task manager
+2018-01-27 00:52:24.513 [main] SamzaResourceRequest [INFO] Resource Request created for 0 on ANY_HOST at 1517014344513
+2018-01-27 00:52:24.513 [main] YarnClusterResourceManager [INFO] Requesting resources on  ANY_HOST for container 0
+2018-01-27 00:52:24.518 [main] YarnClusterResourceManager [INFO] Making a request for ANY_HOST ANY_HOST
+2018-01-27 00:52:24.532 [main] ContainerProcessManager [INFO] Starting the container allocator thread
+2018-01-27 00:52:26.753 [AMRM Heartbeater thread] AMRMClientImpl [INFO] Received new token for : ubuntu-xenial:38185
+2018-01-27 00:52:26.757 [AMRM Callback Handler Thread] YarnClusterResourceManager [INFO] Container allocated from RM on ubuntu-xenial
+2018-01-27 00:52:26.759 [AMRM Callback Handler Thread] ContainerProcessManager [INFO] Container allocated from RM on ubuntu-xenial
+2018-01-27 00:52:26.759 [AMRM Callback Handler Thread] ResourceRequestState [INFO] Host affinity not enabled. Saving the samzaResource container_1517014133362_0001_01_000002 in the buffer for ANY_HOST
+2018-01-27 00:52:28.155 [Container Allocator Thread] YarnClusterResourceManager [INFO] Cancelling request SamzaResourceRequest{numCores=1, memoryMB=1024, preferredHost='ANY_HOST', requestID='b5dab06a-cefa-4fbf-95f8-a16851eb4f36', containerID=0, requestTimestampMs=1517014344513} 
+2018-01-27 00:52:28.156 [Container Allocator Thread] AbstractContainerAllocator [INFO] Found available resources on ANY_HOST. Assigning request for container_id 0 with timestamp 1517014344513 to resource container_1517014133362_0001_01_000002
+2018-01-27 00:52:28.159 [Container Allocator Thread] YarnClusterResourceManager [INFO] Received launch request for 0 on hostname ubuntu-xenial
+2018-01-27 00:52:28.163 [Container Allocator Thread] YarnContainerRunner [INFO] Got available container ID (0) for container: Container: [ContainerId: container_1517014133362_0001_01_000002, NodeId: ubuntu-xenial:38185, NodeHttpAddress: ubuntu-xenial:8042, Resource: <memory:1024, vCores:1>, Priority: 0, Token: Token { kind: ContainerToken, service: 127.0.1.1:38185 }, ]
+2018-01-27 00:52:28.163 [Container Allocator Thread] YarnContainerRunner [INFO] In runContainer in util: fwkPath= ;cmdPath=./__package/;jobLib=
+2018-01-27 00:52:28.165 [Container Allocator Thread] YarnContainerRunner [INFO] Container ID 0 using command ./__package//bin/run-container.sh
+2018-01-27 00:52:28.165 [Container Allocator Thread] YarnContainerRunner [INFO] Container ID 0 using environment variables: 
+SAMZA_CONTAINER_ID=0
+EXECUTION_ENV_CONTAINER_ID=container_1517014133362_0001_01_000002
+SAMZA_COORDINATOR_URL=http://10.0.2.15:40692/
+JAVA_OPTS=
+2018-01-27 00:52:28.165 [Container Allocator Thread] YarnContainerRunner [INFO] Samza FWK path: ./__package//bin/run-container.sh; env={SAMZA_CONTAINER_ID=0, EXECUTION_ENV_CONTAINER_ID=container_1517014133362_0001_01_000002, SAMZA_COORDINATOR_URL=http://10.0.2.15:40692/, JAVA_OPTS=}
+2018-01-27 00:52:28.167 [Container Allocator Thread] YarnContainerRunner [INFO] Starting container ID 0 using package path file:/vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz
+2018-01-27 00:52:28.167 [Container Allocator Thread] YarnContainerRunner [INFO] starting container file:/vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz Container: [ContainerId: container_1517014133362_0001_01_000002, NodeId: ubuntu-xenial:38185, NodeHttpAddress: ubuntu-xenial:8042, Resource: <memory:1024, vCores:1>, Priority: 0, Token: Token { kind: ContainerToken, service: 127.0.1.1:38185 }, ] {SAMZA_CONTAINER_ID=0, EXECUTION_ENV_CONTAINER_ID=container_1517014133362_0001_01_000002, SAMZA_COORDINATOR_URL=http://10.0.2.15:40692/, JAVA_OPTS=} export SAMZA_LOG_DIR=<LOG_DIR>  && ln -sfn <LOG_DIR> logs && exec ./__package//bin/run-container.sh 1>logs/stdout 2>logs/stderr
+2018-01-27 00:52:28.420 [Container Allocator Thread] YarnContainerRunner [INFO] set package Resource in YarnContainerRunner for scheme: "file" port: -1 file: "/vagrant/hello-samza/target/hello-samza-0.14.0-dist.tar.gz"
+2018-01-27 00:52:28.489 [Container Allocator Thread] ContainerManagementProtocolProxy [INFO] Opening proxy : ubuntu-xenial:38185
+2018-01-27 00:52:28.566 [Container Allocator Thread] YarnContainerRunner [INFO] Claimed container ID 0 for container container_1517014133362_0001_01_000002 on node ubuntu-xenial (http://ubuntu-xenial:8042/node/containerlogs/container_1517014133362_0001_01_000002).
+2018-01-27 00:52:28.566 [Container Allocator Thread] YarnContainerRunner [INFO] Started container ID 0
