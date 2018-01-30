@@ -1,0 +1,9 @@
+OpenJDK 64-Bit Server VM (25.151-b12) for linux-amd64 JRE (1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12), built on Oct 27 2017 21:59:02 by "buildd" with gcc 5.4.0 20160609
+Memory: 4k page, physical 4046420k(2270212k free), swap 0k(0k free)
+CommandLine flags: -XX:GCLogFileSize=10241024 -XX:InitialHeapSize=64742720 -XX:MaxHeapSize=805306368 -XX:NumberOfGCLogFiles=10 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseGCLogFileRotation -XX:+UseParallelGC 
+2018-01-30T22:22:12.332+0000: 0.498: [GC (Allocation Failure)  15872K->2299K(60928K), 0.0079035 secs]
+2018-01-30T22:22:12.860+0000: 1.025: [GC (Allocation Failure)  18171K->2715K(76800K), 0.0221528 secs]
+2018-01-30T22:22:13.447+0000: 1.612: [GC (Allocation Failure)  34459K->5448K(76800K), 0.0086959 secs]
+2018-01-30T22:22:14.759+0000: 2.924: [GC (Allocation Failure)  37192K->8149K(108544K), 0.0228396 secs]
+2018-01-30T22:22:15.935+0000: 4.100: [GC (Metadata GC Threshold)  71559K->12081K(108544K), 0.0166271 secs]
+2018-01-30T22:22:15.951+0000: 4.117: [Full GC (Metadata GC Threshold)  12081K->6797K(98816K), 0.0303712 secs]

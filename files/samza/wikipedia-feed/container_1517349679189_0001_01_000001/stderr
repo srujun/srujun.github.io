@@ -1,0 +1,7 @@
+openjdk version "1.8.0_151"
+OpenJDK Runtime Environment (build 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12)
+OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517349679189_0001/filecache/10/hello-samza-0.14.0-dist.tar.gz/lib/slf4j-log4j12-1.6.2.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/tmp/hadoop-ubuntu/nm-local-dir/usercache/ubuntu/appcache/application_1517349679189_0001/filecache/10/hello-samza-0.14.0-dist.tar.gz/lib/slf4j-simple-1.7.12.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.

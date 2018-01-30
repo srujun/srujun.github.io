@@ -1,0 +1,2 @@
+2018-01-30 22:25:01.505 [main] STARTUP_LOGGER [INFO] Started JmxServer registry port=38713 server port=43062 url=service:jmx:rmi://localhost:43062/jndi/rmi://localhost:38713/jmxrmi
+2018-01-30 22:25:01.507 [main] STARTUP_LOGGER [INFO] If you are tunneling, you might want to try JmxServer registry port=38713 server port=43062 url=service:jmx:rmi://10.0.2.15:43062/jndi/rmi://10.0.2.15:38713/jmxrmi

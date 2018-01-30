@@ -1,0 +1,19 @@
+OpenJDK 64-Bit Server VM (25.151-b12) for linux-amd64 JRE (1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12), built on Oct 27 2017 21:59:02 by "buildd" with gcc 5.4.0 20160609
+Memory: 4k page, physical 4046420k(2503748k free), swap 0k(0k free)
+CommandLine flags: -XX:GCLogFileSize=10241024 -XX:InitialHeapSize=64742720 -XX:MaxHeapSize=805306368 -XX:NumberOfGCLogFiles=10 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseGCLogFileRotation -XX:+UseParallelGC 
+2018-01-30T22:21:59.592+0000: 0.427: [GC (Allocation Failure)  15872K->2293K(60928K), 0.0042437 secs]
+2018-01-30T22:22:00.021+0000: 0.857: [GC (Allocation Failure)  18165K->2662K(60928K), 0.0045912 secs]
+2018-01-30T22:22:00.296+0000: 1.132: [GC (Allocation Failure)  18534K->3871K(60928K), 0.0033101 secs]
+2018-01-30T22:22:00.592+0000: 1.428: [GC (Allocation Failure)  19743K->4876K(76800K), 0.0032971 secs]
+2018-01-30T22:22:01.151+0000: 1.987: [GC (Allocation Failure)  36620K->7438K(75776K), 0.0041267 secs]
+2018-01-30T22:22:01.762+0000: 2.598: [GC (Allocation Failure)  38158K->9691K(78336K), 0.0048687 secs]
+2018-01-30T22:22:03.297+0000: 4.132: [GC (Allocation Failure)  39899K->10818K(76800K), 0.0048890 secs]
+2018-01-30T22:22:03.405+0000: 4.240: [GC (Metadata GC Threshold)  16881K->9176K(78336K), 0.0053528 secs]
+2018-01-30T22:22:03.411+0000: 4.246: [Full GC (Metadata GC Threshold)  9176K->4327K(64000K), 0.0325166 secs]
+2018-01-30T22:22:04.162+0000: 4.998: [GC (Allocation Failure)  34023K->7258K(64000K), 0.0038513 secs]
+2018-01-30T22:22:05.143+0000: 5.978: [GC (Allocation Failure)  36954K->8117K(73728K), 0.0049314 secs]
+2018-01-30T22:22:05.998+0000: 6.833: [GC (Allocation Failure)  49074K->9763K(74752K), 0.0053582 secs]
+2018-01-30T22:22:06.188+0000: 7.023: [GC (Allocation Failure)  50723K->9948K(89088K), 0.0040610 secs]
+2018-01-30T22:22:07.078+0000: 7.914: [GC (Allocation Failure)  65244K->12061K(89088K), 0.0054127 secs]
+2018-01-30T22:22:10.992+0000: 11.827: [GC (Metadata GC Threshold)  31793K->10265K(105472K), 0.0043392 secs]
+2018-01-30T22:22:10.997+0000: 11.832: [Full GC (Metadata GC Threshold)  10265K->9168K(119808K), 0.0517109 secs]

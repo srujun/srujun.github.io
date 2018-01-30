@@ -1,0 +1,17 @@
+OpenJDK 64-Bit Server VM (25.151-b12) for linux-amd64 JRE (1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12), built on Oct 27 2017 21:59:02 by "buildd" with gcc 5.4.0 20160609
+Memory: 4k page, physical 4046420k(2464600k free), swap 0k(0k free)
+CommandLine flags: -XX:GCLogFileSize=10241024 -XX:InitialHeapSize=64742720 -XX:MaxHeapSize=805306368 -XX:NumberOfGCLogFiles=10 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseGCLogFileRotation -XX:+UseParallelGC 
+2018-01-30T22:24:55.591+0000: 0.362: [GC (Allocation Failure)  15872K->2266K(60928K), 0.0041314 secs]
+2018-01-30T22:24:55.912+0000: 0.683: [GC (Allocation Failure)  18138K->2646K(60928K), 0.0031756 secs]
+2018-01-30T22:24:56.139+0000: 0.910: [GC (Allocation Failure)  18518K->3822K(60928K), 0.0027955 secs]
+2018-01-30T22:24:56.362+0000: 1.133: [GC (Allocation Failure)  19694K->4746K(76800K), 0.0030722 secs]
+2018-01-30T22:24:56.865+0000: 1.636: [GC (Allocation Failure)  36490K->7270K(76800K), 0.0048132 secs]
+2018-01-30T22:24:57.507+0000: 2.278: [GC (Allocation Failure)  39014K->9589K(78336K), 0.0054627 secs]
+2018-01-30T22:24:59.363+0000: 4.134: [GC (Allocation Failure)  40309K->10620K(77312K), 0.0136090 secs]
+2018-01-30T22:24:59.532+0000: 4.303: [GC (Metadata GC Threshold)  17151K->9164K(105984K), 0.0090086 secs]
+2018-01-30T22:24:59.541+0000: 4.312: [Full GC (Metadata GC Threshold)  9164K->4495K(92672K), 0.0473368 secs]
+2018-01-30T22:25:01.211+0000: 5.982: [GC (Allocation Failure)  64911K->9160K(95744K), 0.0039032 secs]
+2018-01-30T22:25:02.562+0000: 7.333: [GC (Allocation Failure)  69576K->11659K(115712K), 0.0062159 secs]
+2018-01-30T22:25:03.129+0000: 7.900: [GC (Allocation Failure)  92043K->13568K(116736K), 0.0069308 secs]
+2018-01-30T22:25:03.690+0000: 8.460: [GC (Metadata GC Threshold)  45409K->11801K(140800K), 0.0040084 secs]
+2018-01-30T22:25:03.694+0000: 8.465: [Full GC (Metadata GC Threshold)  11801K->9414K(157184K), 0.0649482 secs]
