@@ -6,21 +6,9 @@
     <description>Recent content on Thoughts In Progress</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jan 2018 09:11:53 -0600</lastBuildDate>
     
 	<atom:link href="http://srujun.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Towards an optimal solution for Open Flood</title>
-      <link>http://srujun.com/blog/towards-an-optimal-solution-for-open-flood/</link>
-      <pubDate>Fri, 12 Jan 2018 09:11:53 -0600</pubDate>
-      
-      <guid>http://srujun.com/blog/towards-an-optimal-solution-for-open-flood/</guid>
-      <description>A couple months ago I came by an interesting problem that my friends were working on for their Algorithms course homework. The problem statement (linked here) was:
- (This question was inspired by the game Open Flood [available as an app on Android].)
-You are given a directed graph $\text{G}$ with $n$ vertices and $m$ edges (here $m \geq n$). Every edge $e \in \text{E(G)}$ has a color $c(\text{e})$ associated with it.</description>
-    </item>
     
     <item>
       <title>Home</title>
@@ -30,15 +18,6 @@ You are given a directed graph $\text{G}$ with $n$ vertices and $m$ edges (here 
       <guid>http://srujun.com/home/</guid>
       <description>Hello! I&amp;rsquo;m Srujun Thanmay Gupta, a software engineer at Google working on User Data and Privacy. Previously, I graduated from the University of Illinois at Urbana-Champaign majoring in Computer Engineering. As an undergraduate student, I studied stream data processing systems with Prof. Indy and Shadi A. Noghabi, PhD.
 This blog is an attempt to motivate me to write more. I want to post about things like my individual research work, projects, thoughts, and experiments.</description>
-    </item>
-    
-    <item>
-      <title>Résumé</title>
-      <link>http://srujun.com/resume/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://srujun.com/resume/</guid>
-      <description>Your browser does not support the HTML object tag. You can access the PDF here: Résumé.</description>
     </item>
     
   </channel>
