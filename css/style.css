@@ -864,6 +864,150 @@ main {
   color: var(--fg4);
 }
 
+/* ==========================================================================
+   Playable Open Flood Widget
+   ========================================================================== */
+
+.open-flood-widget {
+  margin: 1.75rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+
+.of-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  background-color: var(--bg-subtle);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-sans);
+}
+
+.of-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.of-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.of-stats {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg4);
+}
+
+.of-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.of-btn {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: var(--fg2);
+  background-color: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.of-btn:hover:not(:disabled) {
+  color: var(--fg);
+  border-color: var(--rule-strong);
+  background-color: var(--bg-subtle);
+}
+
+.of-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.of-body {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.of-board {
+  display: grid;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+.of-cell {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+.of-cell:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.of-palette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.of-swatch {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.of-swatch:hover:not(:disabled) {
+  transform: scale(1.08);
+}
+
+.of-swatch.is-current {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--fg);
+  cursor: default;
+}
+
+.of-swatch:disabled:not(.is-current) {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.of-status {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--fg4);
+  text-align: center;
+}
+
+.of-status.is-solved {
+  color: var(--fg);
+  font-weight: 500;
+}
+
 .prose mark {
   background-color: var(--mark-bg);
   color: var(--fg);
