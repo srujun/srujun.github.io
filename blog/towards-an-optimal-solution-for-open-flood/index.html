@@ -1,1185 +1,158 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="description" content="Srujun Thanmay Gupta&#39;s Blog">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Towards an optimal solution for Open Flood — Srujun Thanmay Gupta</title>
+  <meta name="description" content="Exploring an algorithms homework problem inspired by the Open Flood puzzle game.">
+  <link rel="canonical" href="https://srujun.com/blog/towards-an-optimal-solution-for-open-flood/">
+  <link rel="icon" href="/img/favicon.ico">
 
+  <meta property="og:site_name" content="Srujun Thanmay Gupta">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://srujun.com/blog/towards-an-optimal-solution-for-open-flood/">
+  <meta property="og:title" content="Towards an optimal solution for Open Flood">
+  <meta property="og:description" content="Exploring an algorithms homework problem inspired by the Open Flood puzzle game.">
 
-<meta property="og:site_name" content="Thoughts In Progress" />
-<meta property="og:locale" content="nn_NO" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://srujun.com/blog/towards-an-optimal-solution-for-open-flood/" />
-<meta property="og:title" content="Towards an optimal solution for Open Flood" />
-<meta property="twitter:title" content="Towards an optimal solution for Open Flood">
-
-    <meta property="twitter:card" content="summary">
-
-<meta property="og:description" content="">
-<meta property="twitter:description" content="">
-
-<title>
-
-
-     Thoughts In Progress - Towards an optimal solution for Open Flood 
-
-</title>
-<link rel="canonical" href="http://srujun.com/blog/towards-an-optimal-solution-for-open-flood/">
-
-
-<style media="screen">
-  @font-face {
-  font-family: 'Nexa Bold';
-  src: url('http://srujun.com/fonts/Nexa Bold.otf');
-}
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, div.column {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-a,
-a:visited,
-a:focus,
-a:active {
-  text-decoration: none;
-}
-html {
-  height: 100%;
-  font-size: 16px;
-}
-body {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
-  -ms-justify-content: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-  min-height: 100%;
-  font-weight: 400;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  color: #111111;
-  line-height: 1.6;
-  text-rendering: optimizeLegibility !important;
-}
-.icon {
-  text-rendering: geometricPrecision !important;
-}
-section {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  width: 100%;
-}
-div.column {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  width: 100%;
-}
-.container {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  width: 100%;
-}
-div.header .container {
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-}
-div.header .content {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-}
-div.header .container .logo {
-  max-width: 100px;
-  margin-left: -2em;
-}
-div.header .name {
-  padding-top: 20px;
-  font-size: 28px;
-  font-family: 'Nexa Bold', 'Helvetica Neue', 'Arial', sans-serif;
-  letter-spacing: -0.005rem;
-  text-transform: uppercase;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  color: #333333;
-  color: #555555;
-}
-div.header nav {
-  margin-bottom: 16px;
-}
-div.header nav ul {
-  list-style: none;
-  text-align: center;
-  display: -webkit-inline-flex;
-  display: -moz-inline-flex;
-  display: -ms-inline-flexbox;
-  display: -ms-inline-flex;
-  display: inline-flex;
-}
-div.header nav ul li {
-  margin-left: 6px;
-  margin-right: 6px;
-}
-div.header nav ul li:first-child {
-  margin-left: 0;
-}
-div.header nav ul li:last-child {
-  margin-right: 0;
-}
-div.header nav ul a {
-  color: #555555;
-  font-weight: 400;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  -webkit-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -moz-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -ms-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -o-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-}
-div.header nav ul a:hover {
-  color: #111111;
-}
-div.footer .container {
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  flex-direction: column-reverse;
-  width: 100%;
-  text-align: center;
-}
-div.footer .container a {
-  font-size: 14px;
-  margin-left: 6px;
-  margin-right: 6px;
-  opacity: 0.6;
-  -webkit-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -moz-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -ms-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -o-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-}
-div.footer .container a:first-child {
-  margin-left: 0;
-}
-div.footer .container a:last-child {
-  margin-right: 0;
-}
-div.footer .container a:hover {
-  opacity: 0.8;
-}
-div.footer .container a .icon {
-  width: 16px;
-  height: 16px;
-}
-div.footer .container .copyright {
-  flex-grow: 0.5;
-  text-align: start;
-}
-div.footer .container .icons {
-  flex-grow: 0.5;
-  text-align: end;
-}
-div.main .container {
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
-  -ms-justify-content: flex-start;
-  justify-content: flex-start;
-}
-div.main .content {
-  color: #111111;
-  font-size: 16px;
-}
-div.main .content .title-container {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
-}
-div.main .content .posts {
-  margin-bottom: 4em;
-}
-div.main .content .page-heading {
-  font-size: 20px;
-  font-weight: 700;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  letter-spacing: -0.005rem;
-  text-transform: uppercase;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  color: #333333;
-  margin-bottom: 16px;
-}
-div.main .content .front-matter .page-heading {
-  margin-bottom: 0;
-}
-div.main .content .front-matter .meta {
-  font-size: 14px;
-  color: #666666;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  margin-bottom: 32px;
-}
-div.main .content .front-matter .date,
-div.main .content .front-matter .author,
-div.main .content .front-matter .tags,
-div.main .content .front-matter .word-count,
-div.main .content .front-matter .middot:before {
-  display: none;
-}
-div.main .content .front-matter .middot:before {
-  font-size: 6px;
-  margin: 0 6px;
-  vertical-align: middle;
-  content: "•";
-}
-div.main .content .front-matter .tags ul {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-}
-div.main .content .front-matter .tags ul li {
-  -webkit-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -moz-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -ms-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -o-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-}
-div.main .content .front-matter .tags ul li:hover {
-  opacity: 0.7;
-}
-div.main .content .front-matter .tags ul li a {
-  color: #666666;
-}
-div.main .container.f04 {
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-}
-div.main .container.f04 .content {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-}
-div.main .container.f04 .content .num {
-  margin: 30px 0px 30px 0;
-  font-weight: 400;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  font-size: 50px;
-}
-div.main .container.f04 .content .detail {
-  margin-bottom: 40px;
-}
-div.main .container .content .groupby {
-  margin-top: 1em;
-  padding-left: 0.5em;
-}
-div.main .container .content .post-item {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  display: list-item;
-  list-style: disc inside;
-}
-div.main .container .content .post-item .meta {
-  font-size: 14px;
-  color: #666666;
-  display: none;
-  min-width: 100px;
-}
-div.main .container .content .see-more {
-  font-style: italic;
-  float: right;
-  font-size: 0.9em;
-  margin-top: 2em;
-  color: #313537;
-}
-div.main .container .content .see-more:hover {
-  color: #666;
-}
-section {
-  padding: 0 16px;
-}
-div.column {
-  padding: 0 16px;
-}
-div.header {
-  padding-top: 10px;
-}
-div.header-home {
-  padding-top: 36px;
-}
-div.main {
-  padding-top: 32px;
-}
-div.main .container .content .post-item .meta {
-    display: block;
-}
-div.main .container .content .post-item {
-    display: flex;
-    list-style: none;
-}
-a {
-  color: #428bca;
-  -webkit-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -moz-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -ms-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-  -o-transition: color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-}
-a:hover {
-  color: #2a6496;
-}
-img {
-  max-width: 100%;
-}
-div.main .content {
-    width: 100%;
-}
-div.main .content .markdown {
-  font-size: 1.1em;
-  line-height: 1.75em;
-  color: #313537;
-  font-family: serif;
-  font-weight: 300;
-}
-div.main .content .markdown h1,
-div.main .content .markdown h2,
-div.main .content .markdown h3,
-div.main .content .markdown h4,
-div.main .content .markdown h5,
-div.main .content .markdown h6 {
-  font-size: 22px;
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  letter-spacing: -0.005rem;
-  font-weight: 700;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  color: #333333;
-  text-transform: none;
-  margin-top: 1.75rem;
-}
-div.main .content .markdown h1 {
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
-}
-div.main .content .markdown h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-div.main .content .markdown h3 {
-  font-size: 1em;
-  margin-bottom: 1rem;
-}
-div.main .content .markdown h4,
-div.main .content .markdown h5,
-div.main .content .markdown h6 {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  letter-spacing: none;
-}
-div.main .content .markdown code,
-div.main .content .markdown pre {
-  font-family: 'Menlo', monospace;
-  font-size: 0.98rem;
-  background-color: #f7f7f7;
-}
-div.main .content .markdown code {
-  /* enclosed by single backtick (`) */
-  padding: .15em .5em;
-  border-radius: 2px;
-}
-div.main .content .markdown pre {
-  /* Hugo specific: consider using the 'highlight' shortcode */
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  line-height: 1.5em;
-  white-space: pre;
-  word-break: break-all;
-  word-wrap: break-word;
-}
-div.main .content .markdown pre code {
-  /* enclosed by 4 backticks (````) */
-  padding: 0;
-  font-size: 0.9rem;
-}
-div.main .content .markdown a code {
-  color: #428bca !important;
-}
-div.main .content .markdown a code:hover {
-  text-decoration: underline;
-}
-div.main .content .markdown p {
-  
-  text-align: justify;
-  
-  margin-top: 0;
-  margin-bottom: 1em;
-}
-div.main .content .markdown ul,
-div.main .content .markdown ol,
-div.main .content .markdown dl {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
-div.main .content .markdown dt {
-  font-weight: bold;
-}
-div.main .content .markdown dd {
-  margin-bottom: .5rem;
-}
-div.main .content .markdown ul {
-  list-style-type: disc;
-  list-style-position: outside;
-  margin-bottom: 1.25rem;
-}
-div.main .content .markdown ol {
-  list-style-type: decimal;
-  margin-bottom: 1.25rem;
-}
-div.main .content .markdown li {
-  margin-left: 2em;
-}
-div.main .content .markdown em {
-  font-style: italic;
-}
-div.main .content .markdown strong {
-  font-weight: 700;
-}
-div.main .content .markdown hr {
-  position: relative;
-  margin: 1.75rem 0;
-  border: 0;
-  border-top: 1px solid #808080;
-  border-top: 1px solid #999999;
-}
-div.main .content .markdown abbr {
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: #666666;
-  text-transform: uppercase;
-}
-div.main .content .markdown abbr[title] {
-  cursor: help;
-  border-bottom: 1px dotted #808080;
-}
-div.main .content .markdown blockquote {
-  padding: .5rem 1rem;
-  margin: .8rem 0;
-  color: #7a7a7a;
-  border-left: .25rem solid #e5e5e5;
-}
-div.main .content .markdown blockquote p:last-child {
-  margin-bottom: 0;
-}
-div.main .content .markdown figure {
-  width: 100%;
-  background: #fff;
-  margin-bottom: 1em;
-}
-div.main .content .markdown figure img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  position: static;
-  margin: auto;
-}
-div.main .content .markdown table {
-  margin-bottom: 1rem;
-  width: 100%;
-  border: 1px solid #e5e5e5;
-  border-collapse: collapse;
-}
-div.main .content .markdown td,
-div.main .content .markdown th {
-  padding: .25rem .5rem;
-  border: 1px solid #e5e5e5;
-}
-div.main .content .markdown tbody tr:nth-child(odd) td,
-div.main .content .markdown tbody tr:nth-child(odd) th {
-  background-color: #f7f7f7;
-}
-div.main .content .markdown .footnotes ol {
-  list-style-type: decimal;
-  margin-left: 16px;
-}
-div.main .content .markdown .footnotes li {
-  list-style-type: unset;
-}
-div.main .content .markdown .footnote-ref {
-  font-size: 0.7em;
-}
-div.main .content .navigation {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  padding: 2em;
-}
-div.main .content .navigation div {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  margin-top: 1em;
-}
-div.main .content .navigation .icon {
-  width: 16px;
-  height: 16px;
-}
-div.main .content .navigation a {
-  width: 250px;
-  margin: 0 1em;
-  text-align: center;
-  font-style: italic;
-  color: #313537;
-}
-div.main .content .share, div.main .content .share div {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  justify-content: center;
-}
-div.main .content .share {
-  background-color: rgba(152, 152, 152, 0.07);
-  padding: 1em 0;
-}
-div.main .content .share a {
-  margin: 0 6px;
-}
-kbd {
-  padding: 0.1em 0.6em;
-  border: 1px solid #ccc;
-  font-size: 11px;
-  font-family: Arial,Helvetica,sans-serif;
-  background-color: #f7f7f7;
-  color: #333;
-  -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
-  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
-  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  display: inline-block;
-  margin: 0 0.1em;
-  text-shadow: 0 1px 0 #fff;
-  line-height: 1.4;
-  white-space: nowrap;
-}
-
-/* Fonts */
-
-
-.wf-raleway-n4-active body, 
-.wf-raleway-n4-active div.header nav ul a,
-.wf-raleway-n7-active div.main .content .page-heading,
-.wf-raleway-n2-active div.main .container.f04 .content .num,
-.wf-raleway-n7-active div.main .content .markdown h1,
-.wf-raleway-n7-active div.main .content .markdown h2,
-.wf-raleway-n7-active div.main .content .markdown h3,
-.wf-raleway-n7-active div.main .content .markdown h4,
-.wf-raleway-n7-active div.main .content .markdown h5,
-.wf-raleway-n7-active div.main .content .markdown h6 {
-      font-family: 'Raleway';
-}
-
-.wf-merriweather-n3-active div.main .content .markdown {
-      font-family: 'Merriweather';
-}
-
-.wf-ubuntu-mono-n4-active div.main .content .markdown code,
-.wf-ubuntu-mono-n4-active div.main .content .markdown pre {
-      font-family: 'Ubuntu Mono';
-}
-
-
-</style>
-<style media="(min-width: 600px)">
-  body {
--webkit-justify-content: center;
--moz-justify-content: center;
--ms-justify-content: center;
-justify-content: center;
-}
-.non-narrow.zero-top-spacing {
-padding-top: 0 !important;
-}
-section {
-padding: 0 16px;
-margin-left: 100px;
-margin-right: 100px;
-max-width: 750px;
-}
-div.column {
-padding: 0 16px;
-margin-left: 100px;
-margin-right: 100px;
-max-width: 750px;
-}
-div.header {
-background-color: transparent;
-}
-div.header .container {
--webkit-justify-content: flex-start;
--moz-justify-content: flex-start;
--ms-justify-content: flex-start;
-justify-content: flex-start;
-}
-div.header .container .logo {
-margin: 0;
-}
-div.header-home .container .logo {
-max-width: 180px;
-margin-left: 20px;
-}
-div.header-home .name-home {
-padding-top: 30px;
-font-size: 40px;
-}
-div.header-home nav ul a {
-font-size: 18px;
-}
-div.header .content {
--webkit-align-items: flex-start;
--moz-align-items: flex-start;
--ms-align-items: flex-start;
-align-items: flex-start;
-}
-div.header .name {
-color: #333333;
-}
-div.header nav {
-font-size: 14px;
-margin-bottom: 0;
-}
-div.header nav ul {
-text-align: left;
-}
-div.header nav ul a {
-color: #666666;
-}
-div.header nav ul a:hover {
-color: #333333;
-}
-div.footer {
-background-color: transparent;
-}
-div.footer .container {
-flex-direction: row;
-}
-div.footer .container a {
-margin-left: 3px;
-margin-right: 3px;
-color: #666666;
-}
-div.footer .container a:hover {
-color: #333333;
-}
-div.footer .container a .icon {
-font-size: 18px;
-}
-div.footer .container a .icon.larger {
-font-size: 20px;
-}
-div.main .content .front-matter .date,
-div.main .content .front-matter .author,
-div.main .content .front-matter .tags,
-div.main .content .front-matter .word-count,
-div.main .content .front-matter .middot:before {
-display: initial;
-}
-div.main .container.f04 {
--webkit-justify-content: flex-start;
--moz-justify-content: flex-start;
--ms-justify-content: flex-start;
-justify-content: flex-start;
-}
-div.main .container.f04 .content {
--webkit-align-items: flex-start;
--moz-align-items: flex-start;
--ms-align-items: flex-start;
-align-items: flex-start;
-}
-div.main .container.f04 .content .num {
-margin: 0 0 10px 0;
-font-size: 32px;
-}
-div.main .container.f04 .content .detail {
-margin-bottom: 30px;
-}
-.container {
-padding: 0 30px;
-}
-div.header {
-padding-top: 60px;
-padding-bottom: 60px;
-}
-div.footer {
-padding-top: 30px;
-padding-bottom: 60px;
-}
-div.main {
-padding-top: 0;
-}
-div.main .container .content .post-item {
-display: flex;
-list-style: none;
-padding-left: 1.5em;
-}
-div.main .container .content .post-item .meta {
-display: block;
-}
-div.main.post {
-padding-top: 60px;
-padding-bottom: 60px;
-}
-div.main .content .markdown blockquote {
-padding-right: 5rem;
-padding-left: 1.25rem;
-}
-div.main .content .navigation {
--webkit-flex-direction: row;
--moz-flex-direction: row;
--ms-flex-direction: row;
-flex-direction: row;
-}
-div.main .content .navigation div {
-margin-top: 0em;
-}
-
-</style>
-<style media="(min-width: 769px)">
-  div.main .content .markdown figure {
-width: 110%;
-margin-left: -4%;
-}
-div.main .content .markdown img {
-max-width: 110%;
-width: 110%;
-margin-left: -4%;
-}
-div.main .content .markdown pre {
-width: 110%;
-margin-left: -4%;
-}
-
-</style>
-
-<noscript>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,700,700i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet">
-</noscript>
-
-
-  <style type="text/css" media="screen">
-    .hljs{display:block;background:white;padding:0.5em;color:#333333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-string,.hljs-variable,.hljs-template-variable,.hljs-strong,.hljs-emphasis,.hljs-quote{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-literal,.hljs-symbol,.hljs-bullet,.hljs-attribute{color:#0086b3}.hljs-section,.hljs-name{color:#63a35c}.hljs-tag{color:#333333}.hljs-title,.hljs-attr,.hljs-selector-id,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}
-  </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="shortcut icon"
-
-    href="http://srujun.com/img/favicon.ico"
-
->
-
-
-
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
-
 <body>
+  <div class="wrapper">
+    <header id="site-header" class="site-header">
+      <div class="navbar-logo">
+        <a href="/">SRUJUN THANMAY GUPTA</a>
+      </div>
+      <div class="nav-group">
+        <nav class="top-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/blog/" aria-current="page">Writing</a>
+        </nav>
+        <button id="menu-toggle" class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
 
-
-<div class="header column">
-
-    <div class="container">
-        <a href="http://srujun.com/"><img class="logo" src="http://srujun.com/img/logo.png" alt="logo" /></a>
-        <div class="content">
-            <a href="http://srujun.com/"><div class="name"><h1>Thoughts In Progress</h1></div></a>
-            <nav>
-                <ul>
-                    
-                        <li><a href="http://srujun.com/blog/">Blog</a></li>
-                    
-                    
-                        
-                            
-                        
-                    
-                    
-                        
-                    
-                        
-                            <li><a href="http://srujun.com/resume/">Résumé</a></li>
-                        
-                    
-                </ul>
-            </nav>
-        </div>
+    <div id="mobile-menu" class="mobile-menu-overlay" aria-hidden="true" hidden>
+      <nav class="mobile-menu-nav" aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/blog/">Writing</a>
+      </nav>
     </div>
-</div>
 
+    <main id="main">
+      <article>
+        <header class="post-header">
+          <h1 class="post-title">Towards an optimal solution for Open Flood</h1>
+          <div class="post-meta">
+            <time datetime="2018-01-12">Jan 12, 2018</time>
+            <span class="meta-sep">&middot;</span>
+            <span>2 min read</span>
+          </div>
+        </header>
 
-<div class="main post non-narrow zero-top-spacing column">
-    <div class="container">
-        <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
+        <div class="prose">
+          <p>
+            A couple months ago I came by an interesting problem that my friends were working on
+            for their Algorithms course homework. The problem statement (linked
+            <a href="https://courses.engr.illinois.edu/cs374/fa2017/hw/hw_08.pdf" target="_blank" rel="noopener">here</a>) was:
+          </p>
 
-    Towards an optimal solution for Open Flood
+          <blockquote>
+            <p>(This question was inspired by the game <em>Open Flood</em> [available as an app on Android].)</p>
 
-</div>
+            <p>
+              You are given a directed graph $\text{G}$ with $n$ vertices and $m$ edges (here $m \geq n$).
+              Every edge $e \in \text{E(G)}$ has a color $c(\text{e})$ associated with it. The colors are
+              taken from a set $C = \{1, \ldots, \xi\}$ (assume $\xi \leq n$), and every color $c \in C$
+              has price $p(c) &gt; 0$.
+            </p>
 
-                </div>
-                <div class="meta">
-                    <div class="date" title="Fri Jan 12 2018 09:11:53 CST">Jan 12, 2018</div>
-                    
-                        
-                    
-                    <div class="reading-time middot">2 minute read</div>
-                    <div class="tags">
-                        <ul>
-                          
-                        </ul>
-                    </div>
-                    <div class="tags">
-                        <ul>
-                          
-                          
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="markdown">
-                
-    <p>A couple months ago I came by an interesting problem that my friends were working on for their Algorithms course homework. The problem statement (linked <a href="https://courses.engr.illinois.edu/cs374/fa2017/hw/hw_08.pdf">here</a>) was:</p>
+            <p>
+              Given a start vertex $s_0 = s$, and a sequence $\Pi = \langle c_1, \ldots, c_\ell \rangle$
+              of colors, a <strong><em>compliant walk</em></strong>, at the $i$th time, either stays where
+              it is (i.e., $s_i = s_{i-1}$), or alternatively travels a sequence of edges of color $c_i$
+              that starts at $s_i$. Formally, if there is a path
+            </p>
 
-<blockquote>
-<p>(This question was inspired by the game <em>Open Flood</em> [available as an app on Android].)</p>
+            $$\sigma \equiv (u_1, u_2), (u_2, u_3), \ldots, (u_{\tau-1}, u_\tau) \in \text{E(G)}$$
 
-<p>You are given a directed graph $\text{G}$ with $n$ vertices and $m$ edges (here $m \geq n$). Every edge $e \in \text{E(G)}$ has a color $c(\text{e})$ associated with it. The colors are taken from a set $C = {1, \ldots, \xi}$ (assume $\xi \leq n$), and every color $c \in C$, has price $p(c) &gt; 0$.</p>
+            <p>
+              such that $c((u_j, u_{j+1})) = c_i$ for all $j$, and $u_1 = s_i$, then one can set
+              $s_{i+1} = u_\tau$. The <strong><em>price</em></strong> of $\Pi$ is
+              $p(\Pi) = \sum_{i=1}^\ell p(c_i)$.
+            </p>
 
-<p>Given a start vertex $s_0 = s$, and a sequence of $\Pi = \langle c_1, \ldots, c_\ell \rangle$ of colors, a <em><strong>compliant walk</strong></em>, at the $i$th time, either stays where it is (i.e., $s_{i} = s_{i-1}$), or alternatively travels a sequence of edges of color $c_i$ that starts at $s_i$. Formally, if there is a path $$\sigma \equiv (u_1, u_2), (u_2, u_3), \ldots, (u_{\tau-1}, u_\tau) \in \text{E(G)}$$ such that $c((u_j, u_{j+1})) = c_i$, for all $j$, and $u_1= s_i$, then one can set $s_{i+1} = u_\tau$. The <em><strong>price</strong></em> of $\Pi$ is $p(\Pi)= \sum_{i=1}^\ell p(c_i)$.</p>
+            <p>
+              Describe an algorithm, as fast as possible, that computes the cheapest sequence of colors
+              for which there is a compliant walk in $\text{G}$ from a vertex $s$ to a vertex $t$.
+            </p>
 
-<p>Describe an algorithm, as fast as possible, that computes the cheapest sequence of colors for which there is a compliant walk in $\text{G}$ from a vertex $s$ to a vertex $t$.</p>
+            <p>
+              For full credit, your algorithm should run in $O(m \log m)$ time (be suspicious if you get
+              faster running time). Correct solutions providing polynomial running time would get $50\%$
+              of the points.
+            </p>
+          </blockquote>
 
-<p>For full credit, your algorithm should run in $O(m \log m)$ time (be suspicious if you get faster running time). Correct solutions providing polynomial running time would get $50\%$ of the points.</p>
-</blockquote>
+          <p>
+            Some hard to read math in there, but let us break it down by first looking at the game.
+            It is available on the
+            <a href="https://play.google.com/store/apps/details?id=com.gunshippenguin.openflood" target="_blank" rel="noopener">Google Play Store</a>,
+            and since it is open source, you can browse the source on
+            <a href="https://github.com/GunshipPenguin/open_flood" target="_blank" rel="noopener">GunshipPenguin/open_flood</a>.
+          </p>
 
-<p>Some hard to read math in there, but let us break it down by first looking at the game. It is available on the <a href="https://play.google.com/store/apps/details?id=com.gunshippenguin.openflood">Google Play Store</a>, and since it open source, you can browse the source on <a href="https://github.com/GunshipPenguin/open_flood">GunshipPenguin/open_flood</a>.</p>
+          <figure>
+            <img src="/img/open-flood/android-screenshot.png" alt="Open Flood on Android" style="max-width: 320px;">
+            <figcaption>Open Flood on Android.</figcaption>
+          </figure>
 
-<p><img src="/img/open-flood/android-screenshot.png" alt="Open Flood on Android" style="width:50%;display:block;margin:0 auto;"></p>
+          <p>
+            The idea of the game is simple: you start at the top left cell. In each turn, all adjacent
+            cells with the same color are flooded with the selected color. Below is the Jupyter notebook
+            exploring a few heuristics for solving it:
+          </p>
 
-<p>The idea of the game is simple: you start at the top left cell. In each turn, all adjacent cells with the same color are flooded with the selected color.</p>
+          <div class="notebook-embed" data-notebook="/notebooks/open-flood.ipynb">
+            <p class="nb-error">Loading notebook&hellip;</p>
+          </div>
 
-<iframe width="100%" height="550" src="//jsfiddle.net/ununtrium/cm2vsv5u/embedded/result/" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p>Above is a minimal Javascript implementation of the game.</p>
-
-<p><em>Draft in progress&hellip;</em></p>
-
-
-                <br>
-            </div>
-            
-            
-            <br>
-            <div class="disqus">
-                
-            </div>
-            
+          <p class="draft-note">
+            <em>Draft in progress&hellip;</em>
+          </p>
         </div>
-    </div>
-</div>
 
-<div class="footer column">
-    <div class="container">
+        <a class="back-link" href="/blog/">&larr; Back to writing</a>
+      </article>
+    </main>
 
-        
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <ul class="footer-links">
+          <li><a href="https://github.com/srujun" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/srujungupta" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:srujun@srujun.com">Email</a></li>
+        </ul>
+        <span class="footer-copy">&copy; Srujun Thanmay Gupta</span>
+      </div>
+    </footer>
+  </div>
 
-        <div class="copyright">
-
-        
-
-        </div>
-        <div class="icons">
-
-        
-
-        
-            <a href="https://github.com/srujun" target="_blank">
-                <img class="icon" src="http://srujun.com/img/github.svg" alt="github" />
-            </a>
-        
-
-        
-
-        
-            <a href="https://www.linkedin.com/in/srujungupta" target="_blank">
-                <img class="icon" src="http://srujun.com/img/linkedin.svg" alt="linkedin" />
-            </a>
-        
-
-        
-            <a href="mailto:srujun@srujun.com">
-                <img class="icon" src="http://srujun.com/img/email.svg" alt="email" />
-            </a>
-        
-
-        
-            <a href="http://srujun.com/index.xml">
-                <img class="icon" src="http://srujun.com/img/rss.svg" alt="rss" />
-            </a>
-        
-
-        </div>
-    </div>
-</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-<script>
-  WebFont.load({
-    google: {
-      families: ['Raleway:400,600,700', 'Merriweather:300,300i,700,700i', 'Ubuntu+Mono:400,700']
-    }
-  });
-</script>
-
-
-
-  <script src="http://srujun.com/js/highlight.min.js" defer></script>
-  
-
-
-
-
-
-
-
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-37746576-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<script>
-  window.onload = function() {
-    
-      hljs.initHighlighting();
-    
-    
-    
-  };
-</script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
-</script>
-<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
-
-
-
+  <script src="/js/main.js" defer></script>
+  <script src="/js/notebook.js" defer></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }] });"
+  ></script>
 </body>
 </html>
-
