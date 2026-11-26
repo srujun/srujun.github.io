@@ -628,6 +628,19 @@ main {
   text-decoration-color: var(--link-underline-hover);
 }
 
+.prose .repost-note {
+  margin-bottom: 1.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  background-color: var(--bg-subtle);
+}
+
+.prose .repost-note p {
+  margin-bottom: 0;
+}
+
 .prose h2 {
   font-family: var(--font-serif);
   font-size: 1.45rem;
@@ -711,6 +724,13 @@ main {
   display: block;
   margin: 0 auto;
   border-radius: 4px;
+}
+
+.prose .post-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
 }
 
 .prose figcaption {

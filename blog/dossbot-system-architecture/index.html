@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossbot System Architecture — Srujun Thanmay Gupta</title>
+  <meta name="description" content="How we built Dossbot on top of the Doss platform.">
+  <link rel="canonical" href="https://srujun.com/blog/dossbot-system-architecture/">
+  <link rel="icon" href="/img/favicon.ico">
+
+  <meta property="og:site_name" content="Srujun Thanmay Gupta">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://srujun.com/blog/dossbot-system-architecture/">
+  <meta property="og:title" content="Dossbot System Architecture">
+  <meta property="og:description" content="How we built Dossbot on top of the Doss platform.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header id="site-header" class="site-header">
+      <div class="navbar-logo">
+        <a href="/">SRUJUN THANMAY GUPTA</a>
+      </div>
+      <div class="nav-group">
+        <nav class="top-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/blog/" aria-current="page">Writing</a>
+        </nav>
+        <button id="menu-toggle" class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div id="mobile-menu" class="mobile-menu-overlay" aria-hidden="true" hidden>
+      <nav class="mobile-menu-nav" aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/blog/">Writing</a>
+      </nav>
+    </div>
+
+    <main id="main">
+      <article>
+        <header class="post-header">
+          <h1 class="post-title">Dossbot System Architecture</h1>
+          <div class="post-meta">
+            <time datetime="2025-11-13">Nov 13, 2025</time>
+          </div>
+        </header>
+
+        <div class="prose">
+          <aside class="repost-note" aria-label="Original publication">
+            <p>
+              I originally wrote and published the article below on the
+              <a href="https://www.doss.com/resources/eng-blog/dossbot-system-architecture">Doss Engineering Blog</a>.
+              It walks through the thinking behind the first version of Dossbot, the design work I led,
+              and how we turned that design into a working system.
+            </p>
+          </aside>
+
+          <p> An ERP system is the single most important, and often most expensive, software application a business will use. Because of this, ERP systems encapsulate the most important business complexities and relationships. </p>
+
+          <p> They manage tightly connected data across inventory, procurement, orders, finance, warehousing, and more. For the people running these systems every day, that complexity becomes a constant operational burden: finding the right data, understanding how entities connect, and diagnosing issues when something looks wrong. </p>
+
+          <p> That work usually requires deep platform knowledge and a lot of manual investigation. It is one of the most consistent ERP pain points; there is no Datadog for ERP systems. </p>
+
+          <h2 id="enter-dossbot-ai-that-solves-complex-business-problems"> Enter Dossbot: AI that Solves Complex Business Problems </h2>
+
+          <p> At DOSS, we knew building an AI chatbot has become commoditized; what matters is the tools it has access to and the data it can use. Therefore, <a href="https://www.doss.com/platform/dossbot" rel="noopener noreferrer" target="_blank"> Dossbot </a> was built not as a chatbot bolted onto the side of the product, but as an agentic layer integrated into the DOSS platform. The goal is simple: let users describe a problem in plain language, and have the system navigate the complexity on their behalf. </p>
+
+          <p> At <a href="https://www.doss.com/company/news/dossbot-ga" rel="noopener noreferrer" target="_blank"> DOSSCON1 </a>, we showed what this looks like in practice. We gave Dossbot a deliberately vague prompt: inspect a customer instance and find anything wrong with the SKU structure and its links to the BOM (Bill of Materials). No table names, column hints, or definition of “wrong.” </p>
+
+          <p> Dossbot explored the schema, identified relevant tables, traced SKU-BOM relationships, and surfaced circular BOM references, a failure mode that would normally take a human analyst hours to isolate. </p>
+
+          <figure>
+            <iframe allowfullscreen="" class="post-video" loading="lazy" src="https://www.youtube.com/embed/TXrSce_6cb4" title="DOSSCON1: Dossbot Demo"></iframe>
+            <figcaption> DOSSCON1: Dossbot Demo </figcaption>
+          </figure>
+
+          <p> That demo captured the core shift: users no longer need to know where to look or what query to write. They describe the problem; the agent does the traversal. </p>
+
+          <p> The path to that outcome started well before writing agent code. It started with platform architecture. </p>
+
+          <h2 id="the-platform-did-most-of-the-hard-work"> The Platform Did Most of the Hard Work </h2>
+
+          <p> When we started building Dossbot, the key question was not “How do we connect an LLM to our data?” </p>
+
+          <p> It was: “How much of this problem has our architecture already solved?” </p>
+
+          <p> The answer: most of it. </p>
+
+          <p> DOSS is built on a unified, schema-driven architecture. Entities, relationships, and operations are defined through a single GraphQL type system. Those definitions flow through the stack via <a href="https://www.doss.com/resources/eng-blog/codegen-infrastructure" rel="noopener noreferrer" target="_blank"> codegen </a>, from database schema to backend API to frontend contracts. It is not a set of disconnected layers stitched together over time. It is one connected type system. </p>
+
+          <p> On top of that, DOSS has an <a href="https://www.doss.com/resources/eng-blog/how-we-built-ai-native-rbac" rel="noopener noreferrer" target="_blank"> RBAC model </a> enforced at the GraphQL API layer and at the database layer. Every query and mutation passes through authentication and authorization checks, including: </p>
+
+          <ul>
+            <li> organization-level isolation </li>
+            <li> table-level access control </li>
+            <li> row-level security </li>
+            <li> field-level visibility </li>
+            <li> operation-level permissions </li>
+          </ul>
+
+          <p> All data access runs through this single API surface. </p>
+
+          <p> That meant building Dossbot was primarily about orchestration and UX, not rebuilding data access, permissions, or business logic. The abstractions we needed for agents could plug directly into existing GraphQL and codegen infrastructure. </p>
+
+          <p> The thesis behind Dossbot is straightforward: <strong>a unified, schema-driven, permission-aware platform architecture makes AI agent integration a natural extension rather than a bolt-on.</strong> The engineering choices that make this work, from durable execution to tool abstraction to real-time events, are what turn that foundation into a production-grade and secure agent. </p>
+
+          <h2 id="the-agent-loop"> The Agent Loop </h2>
+
+          <p> At the heart of Dossbot is the agent loop: an explicit, controlled cycle where each iteration of LLM generation and tool execution is fully observable and interruptible. </p>
+
+          <p> Each iteration follows the same pattern: </p>
+
+          <ol>
+            <li> Reconstruct conversation context from the database </li>
+            <li> Call the LLM with available tools </li>
+            <li> Persist the result </li>
+            <li> Execute requested tools </li>
+            <li> Decide whether to continue or stop </li>
+          </ol>
+
+          <p> If the model requests tools, results are appended and the loop continues. If it returns a final answer, the run exits. A configurable max-step limit prevents runaway behavior. </p>
+
+          <figure>
+            <img alt="Agent Loop" height="460" loading="lazy" src="/img/dossbot/agent-loop.webp" width="1427"/>
+            <figcaption> Agent Loop </figcaption>
+          </figure>
+
+          <p> This explicit loop design gives us safety, observability, and interruptibility. The loop can be paused while waiting for user approval on a tool call, or canceled entirely at any point. Each step executes as a durable activity with retry and persistence guarantees. And because every iteration is discrete and logged, we get a complete record of the agent's reasoning chain: not just the final answer, but every tool it invoked, every query it ran, and every intermediate conclusion it reached. </p>
+
+          <h2 id="tools-as-abilities"> Tools as Abilities </h2>
+
+          <p> Tools are how Dossbot acts on the platform. Instead of generating text only, the model can request concrete operations: inspect schema, query records, create data, update structures. </p>
+
+          <p> Each tool is defined declaratively with: </p>
+
+          <ul>
+            <li> a name </li>
+            <li> a usage description </li>
+            <li> input/output schemas </li>
+          </ul>
+
+          <p> Tool definitions contain no business execution logic. They are contracts. The model produces schema-conforming JSON; execution happens separately through durable activities with retry/persistence semantics. </p>
+
+          <p> That separation keeps tools composable and auditable. Adding a tool is predictable: define schema, implement executor, register it. Tool building doesn’t require a deeper understanding of the Dossbot platform: it lowers the barrier to entry for any engineer or agent to contribute. </p>
+
+          <h3><strong>Query and Mutation Tools</strong></h3>
+
+          <p> Dossbot’s tools are split into two categories: </p>
+
+          <ul>
+            <li> <strong>Query tools</strong>: read operations (schemas, rows, workflows). Run immediately. </li>
+            <li> <strong>Mutation tools</strong>: write operations (create/update records, schema changes). Require explicit user approval. </li>
+          </ul>
+
+          <p> For mutations, Dossbot generates a confirmation payload explaining exactly what it plans to change, where, and with what values. The user can approve or reject. Rejection feedback is sent back into the loop so the model can revise. </p>
+
+          <p> That human-in-the-loop boundary is non-negotiable in a business-critical system: the basic pattern is free exploration, explicit consent for writes. </p>
+
+          <h3><strong>Prompt Engineering in Tool Descriptions</strong></h3>
+
+          <p> A lot of reliability comes from tool descriptions. The model needs more than “what this tool does.” It needs execution heuristics and prerequisites, like fetching table schema before querying rows to infer type structure correctly. </p>
+
+          <p> Better tool descriptions reduce loop count and improve first-pass correctness. </p>
+
+          <h2 id="security-by-default"> Security by Default </h2>
+
+          <p> Every Dossbot tool calls our existing GraphQL API, authenticated with the user's own JWT token. No tool bypasses this layer. This is a strict, non-negotiable architectural requirement. </p>
+
+          <p> The alternative — giving the agent direct database access — would be faster to implement but fundamentally insecure. DOSS has a sophisticated <a href="https://www.doss.com/resources/eng-blog/how-we-built-ai-native-rbac" rel="noopener noreferrer" target="_blank"> RBAC model </a> enforcing organization-level isolation, table-level access controls, row-level security, field-level visibility, and operation-level permissions. Bypassing the API layer would mean bypassing all of these protections, and the agent could see data the user has no permission to access. </p>
+
+          <p> By routing every tool call through the GraphQL API with the user's token, the agent inherits the full permission model for free. The principle is simple: <strong>the agent operates with exactly the same permissions as the user.</strong> No privilege escalation through AI, cross-tenant data leakage, or bypassing of business rules enforced at the API layer. </p>
+
+          <p> The user's JWT token flows through the entire execution chain, from the frontend, through the API, into the durable workflow, through each tool activity, and into the GraphQL client that executes the tool. At every step, the same authentication and authorization checks run as if the user were making the request directly. </p>
+
+          <p> Beyond RBAC, all workflow data is encrypted with AES-256 before being persisted to the durable execution engine. Dossbot conversations may contain sensitive business data, and the encryption ensures that only DOSS infrastructure can decrypt and read the actual content. </p>
+
+          <h2 id="the-data-model"> The Data Model </h2>
+
+          <p> Dossbot's data model is designed around four levels of granularity, each with its own lifecycle and status tracking: </p>
+
+          <ul>
+            <li> <strong>DossbotChat</strong> represents a full conversation thread. It persists indefinitely and can be resumed at any time. Each chat has an auto-generated title and summary that update as the conversation progresses. </li>
+            <li> <strong>DossbotChatRun</strong> maps one-to-one with a user message. When the user types a prompt and sends it, a new ChatRun is created. It tracks the input prompt, the agent's final response, and the run's status. </li>
+            <li> <strong>AgentRun</strong> represents a single iteration of the agent loop, corresponding to one LLM API call. A ChatRun may have multiple AgentRuns as the agent loops through tool calls. Each AgentRun records the full message array sent to the LLM, the response, and token usage. </li>
+            <li> <strong>ToolRunStep</strong> represents a single tool execution within an agent run. It records which tool was called, the parameters the LLM generated, the tool's result, and the execution status, including whether the user approved or rejected a mutation and their reasoning if they rejected. </li>
+          </ul>
+
+          <figure>
+            <img alt="Dossbot Data Model" height="766" loading="lazy" src="/img/dossbot/data-model.webp" width="841"/>
+            <figcaption> Dossbot Data Model </figcaption>
+          </figure>
+
+          <p> Tying all four levels together is the <strong>immutable event log</strong>. Every state transition across every level is recorded as a <strong>DossbotEvent</strong>. There are dozens of event types covering chat run lifecycle, agent run lifecycle, tool run lifecycle, tool confirmations, and post-processing events like title and summary updates. Each event carries a type-specific payload with the relevant details. </p>
+
+          <p> This event log serves multiple purposes. It drives the real-time UI (described below), it provides a complete audit trail of every action the agent took, and it forms the foundation for offline evaluation, since every conversation is fully recorded and replayable. </p>
+
+          <h3><strong>Building LLM Context per Iteration</strong></h3>
+
+          <p> Every iteration reconstructs full context from persisted history: user messages, model outputs, tool calls, tool results, and system prompt state. System prompt context is augmented with current date/time in user timezone to interpret relative time queries correctly (“this month,” “last quarter,” etc.). </p>
+
+          <p> We also include page-level <strong>breadcrumb context</strong> from the DOSS UI (object type + object ID). That allows prompts like “explain what I’m looking at” without clarifying round-trips. </p>
+
+          <h2 id="schemas-as-contracts"> Schemas as Contracts </h2>
+
+          <p> Schemas are the contract between model output and runtime execution. </p>
+
+          <p> When Dossbot requests a tool, the payload must validate against the tool’s input schema. This removes fragile string parsing and gives predictable structured execution. </p>
+
+          <p> We use Zod-based schemas for: </p>
+
+          <ul>
+            <li> compile-time typing </li>
+            <li> runtime validation </li>
+            <li> tight integration with our AI SDK stack </li>
+          </ul>
+
+          <p> Tool schemas also encode operational constraints (for example, bounded row pagination to control context usage). </p>
+
+          <p> When the LLM generates JSON that doesn't match the expected schema, the system self-corrects. The tool invocation fails, the durable execution layer retries the activity, and if it continues to fail, the error message is sent back to the LLM as a tool result. The agent sees the error and generates a corrected tool call in the next iteration. This self-correcting loop is critical for reliability. LLMs are non-deterministic and occasionally produce malformed inputs, but the architecture handles this gracefully without requiring user intervention. </p>
+
+          <p> Some tools also include an input preprocessing step that catches and fixes known patterns of LLM input deviations before execution, preventing unnecessary retries for common mistakes. </p>
+
+          <p> Each revision pushes the system toward a deterministic execution flow, while keeping reasoning non-deterministic. </p>
+
+          <h2 id="durable-execution"> Durable Execution </h2>
+
+          <p> LLM workflows fail differently than traditional API flows. They have more variable latency/error behavior, and often span many dependent calls. A single user request can involve schema inspection, data fetches, analysis, and write operations across services. Any step can fail. </p>
+
+          <p> Durable execution handles this by persisting workflow state at each step and resuming from the last durable boundary instead of restarting from scratch. </p>
+
+          <h3><strong>One Workflow Per Conversation</strong></h3>
+
+          <p> Each Dossbot conversation gets its own long-lived durable workflow instance. The workflow persists for the entire lifetime of the conversation, but a workflow that is simply waiting for the user's next message doesn't consume any compute resources. This means users can return to any past conversation and pick up exactly where they left off. </p>
+
+          <p> The workflow is signal-driven. Signals notify the workflow of new user messages, tool confirmations or rejections, cancellation requests, and post-processing triggers such as title and summary generation. The system reacts in real time without actively polling or consuming resources when nothing is happening. </p>
+
+          <h3><strong>Activities and Reliability</strong></h3>
+
+          <p> All operations (LLM calls, tool executions, database updates, event publishing) run as durable activities with automatic retry policies. Core activities retry up to three times on failure. Tool activities get a single attempt, because tool errors are more useful when fed back to the LLM for self-correction rather than blindly retried. Activities have timeouts and heartbeat signals to handle long-running operations gracefully. </p>
+
+          <p> Non-confirmation tool calls execute in parallel, improving throughput when the agent requests multiple tools in a single iteration. Mutation tools that require user approval pause the workflow until the user responds, consuming no resources while waiting. </p>
+
+          <p> When a user cancels a run mid-execution, the cancellation propagates through the entire execution chain. In-flight tool executions receive cancellation signals, which is especially important for mutation tools to ensure that unintended changes can be properly prevented. </p>
+
+          <h2 id="showing-the-agents-work-in-real-time"> Showing the Agent's Work in Real Time </h2>
+
+          <p> Dossbot is intentionally transparent. Users see the run unfold step-by-step, not just a spinner and final answer. </p>
+
+          <p> Typical flow: thinking → schema fetch → data query → analysis → recommendation. </p>
+
+          <p> For mutations, a confirmation UI appears with the exact proposed changes, and the system does not allow progress until the user has explicitly allowed the change. ERPs are far too business-sensitive to dangerously bypass permissions! </p>
+
+          <h3><strong>The Event Pipeline</strong></h3>
+
+          <p> The real-time update pipeline flows from the durable execution layer to the user's browser: </p>
+
+          <ol>
+            <li> A durable activity executes and creates a <strong>DossbotEvent</strong> record in PostgreSQL </li>
+            <li> A notification is published to a Redis pub/sub channel </li>
+            <li> A GraphQL subscription picks up the notification over WebSocket </li>
+            <li> The frontend receives the notification and queries the API for the full event details </li>
+            <li> The UI updates </li>
+          </ol>
+
+          <p> Notifications carry only the fact that an event happened, not the event details themselves. When the frontend receives a notification, it queries the API for the full data. Because event records are stored in PostgreSQL, a transactional data store, the data is always persisted in a consistent state. This means that even if the frontend disconnects and misses notifications, the full state can be reconstructed on reconnect by re-querying the database. There are no event ordering issues or missed events that could cause a permanently stale UI. </p>
+
+          <p> This transparency also builds trust. Users can see that the agent is working methodically, fetching context before querying, checking schemas before creating records. And if something goes wrong, the full event trail shows exactly where and why. </p>
+
+          <h2 id="whats-next"> What's Next </h2>
+
+          <p> AI agent systems are fundamentally different from traditional software when it comes to testing. The same prompt can produce different tool call sequences and different responses across runs. Today we monitor production behavior through error tracking, max-iteration alerts, and token usage tracking. The immutable event log captures everything needed for offline evaluation, and we are developing formal eval pipelines covering tool selection accuracy, input correctness, and end-to-end task completion. </p>
+
+          <p> Beyond evals, three areas are shaping the next phase of Dossbot: </p>
+
+          <ul>
+            <li> <strong>Memory</strong>: Remembering who the user is, what they use DOSS for, and their common workflows, so the agent becomes more personalized and efficient over time. </li>
+            <li> <strong>Context management</strong>: Better handling of long agent-driven flows through compaction and summarization, preventing context window overflow while preserving the information the agent needs. </li>
+            <li> <strong>Proactive agent flows</strong>: Moving beyond reactive Q&amp;A to proactive assistance, where Dossbot surfaces issues, recommends optimizations, and suggests action items, with user approval remaining at the center of any changes to data. </li>
+          </ul>
+
+          <p> The direction is clear: not chat for chat’s sake, but production agents that operate safely inside real operational systems. </p>
+        </div>
+
+        <a class="back-link" href="/blog/">&larr; Back to writing</a>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <ul class="footer-links">
+          <li><a href="https://github.com/srujun" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/srujungupta" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:srujun@srujun.com">Email</a></li>
+        </ul>
+        <span class="footer-copy">&copy; Srujun Thanmay Gupta</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
