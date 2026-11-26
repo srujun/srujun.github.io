@@ -538,6 +538,12 @@ main {
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
+.post-link-icon {
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  color: var(--fg4);
+}
+
 .post-item-subtitle {
   font-size: 0.95em;
   line-height: 1.45;
